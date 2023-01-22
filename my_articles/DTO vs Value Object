@@ -1,0 +1,9 @@
+A DTO should only be used in two places: where data enters the application or where it leaves the application
+
+Value Object example class
+Coordinate
+DateRange
+Money
+Currency
+NumberInterval
+EmailAddress

@@ -29,7 +29,7 @@ An object is a write model repository if . . .
 
 ### Entities
 
-The objects that are being persisted will be the ones the user cares about—the ones
+The objects that are being persisted will be the ones the user cares about the ones
 that should be remembered even when the application has to be restarted
 They contain relevant data and offer useful behavior related to this data
 An object is an entity if . . .
@@ -77,7 +77,7 @@ which have been registered for particular types of events.
 final class NotifyGroupMembers 
 {
     // The methods will then point out the reasons for doing so (e.g., “when meetup rescheduled”).
-    public function whenMeetupRescheduled(MeetupRescheduled event): void 
+    public function whenMeetupRescheduled(MeetupRescheduled $event): void 
     {
         /*
         * Send an email to group members using the information from
@@ -100,13 +100,12 @@ An object is a read model . . .
 - if it’s designed specifically for a certain use case, and
 - if all the data needed (and no more) becomes available the moment you retrieve the object
 
-the abstraction describes what you’re looking for, and the implementation describes how you can get it
+### Abstractions, concretions, layers, and dependencies
+The abstraction describes what you’re looking for, and the implementation describes how you can get it
 Every repository need an interface.
 
-### Abstractions, concretions, layers, and dependencies
-
 - Controllers are concrete. They are often coupled to a particular framework and are
-  specific for the delivery mechanism. They don’t have, or need, an interface.
+  specific for the delivery mechanism. They don’t need an interface.
   The only time you’d want to offer an alternative implementation is when you
   switch frameworks. In that case, you’d want to rewrite these controllers instead
   of creating a second implementation for them.
@@ -122,12 +121,12 @@ Every repository need an interface.
   something outside of the application, like a database, the filesystem, or some
   remote service. That’s why they need an abstraction that represents what the
   service will do and what it will return. The implementation will then provide all
-  the low-level details about how it should do that. The same goes for other service objects that will reach out to some
-  service outside the application. These
+  the low-level details about how it should do that. The same goes for other service objects
+  that will reach out to some service outside the application. These
   services will also need an interface and a concrete implementation.
 
 The services for which we have abstractions, according to the preceding list, should be
-injected as abstract dependencies. If we do this, we can form three useful groups, or layers, of objects:
+injected as abstract dependencies. If we do this, we can form three useful groups, or layers of objects:
 1 The infrastructure layer:
 – Controllers
 – Write and read model repository implementations

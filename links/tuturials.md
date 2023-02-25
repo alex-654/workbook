@@ -6,7 +6,6 @@
 
 - https://explainshell.com/
 
-- https://sicp.hexlet.io/ru/exercises
 - https://habr.com/ru/company/vk/blog/310054/
 
 - https://www.rfc-editor.org/

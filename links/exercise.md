@@ -1,3 +1,4 @@
-https://www.codewars.com
-https://pgexercises.com
-https://www.sql-ex.ru
+- https://www.codewars.com
+- https://pgexercises.com
+- https://www.sql-ex.ru
+- https://sicp.hexlet.io/ru/exercises

@@ -19,19 +19,19 @@ could answer the query “give me the current count, but incremented by 1.”
 
 May help with it
 
-- Throw Exception
+- throw Exception
 - return an object that can represent the null case
 - return a result of the same type, but representing the empty case ([], 0, '')
 - add two methods with null and with Exception
 
 ```php
-public function getOneByType(PageType type): Page
+public function getOneByType(PageType $type): Page
 {
-    page = this.findOneByType(type);
-    if (!page instanceof Page) {
-        throw PageNotFound.withType(type);
+    $page = $this->findOneByType($type);
+    if (!$page instanceof Page) {
+        throw PageNotFound::withType($type);
     }
-    return page;
+    return $page;
 }
 ```
 

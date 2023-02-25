@@ -50,18 +50,17 @@ Where method is just performing its task
 - Add detailed messages
 ```php
 final class CouldNotFindProduct extends RuntimeException
-{
-}
+{}
 // At the call site:
-    throw new CouldNotFindProduct('Could not find a product with ID "{productId}"');
+    throw new CouldNotFindProduct("Could not find a product with ID '{$productId}'");
 // After:
 final class CouldNotFindProduct extends RuntimeException
 {
-    public static function withId(ProductId productId): CouldNotFindProduct
+    public static function withId(ProductId $productId): CouldNotFindProduct
     {
-        return new CouldNotFindProduct('Could not find a product with ID "{productId}"');
+        return new CouldNotFindProduct("Could not find a product with ID '{$productId}'");
     }
 }
 // At the call site:
-throw CouldNotFindProduct.withId(productId);
+throw CouldNotFindProduct::withId($productId);
 ```

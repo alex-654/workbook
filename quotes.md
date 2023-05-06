@@ -8,3 +8,5 @@ Martin Fowler
 
 - Code That Fits in Your Head
 - Optimize for change first
+
+- Leaders are readers.

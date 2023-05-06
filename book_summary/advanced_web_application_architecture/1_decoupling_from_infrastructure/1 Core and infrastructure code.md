@@ -6,7 +6,7 @@ The core is the center of your application, the infrastructure is around it.
 #### Rule no 1: No dependencies on external systems.
 
 Core code doesn’t directly depend on external systems, nor does it
-depend on code written for interacting with a specific type of external system.
+depend on code written for interacting with external system.
 External systems - database, some remote web service, the system’s clock, the file system, and
 so on. Core code should be able to run without these external dependencies.
 When code follows the first rule, it means you can run it in complete isolation. 

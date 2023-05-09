@@ -34,9 +34,44 @@ from ARRIVED
 inner join LEAVED on ARRIVED.order_id = LEAVED.order_id and ARRIVED.manager_id = LEAVED.manager_id
 ```
 ## Indexes
-One, Two or more indexes can be used together it depends on DB forecast (how many rows and other)
+Most MySQL indexes (PRIMARY KEY, UNIQUE, INDEX, and FULLTEXT) are stored in B-trees
+One.  
+Two or more indexes can be used together it depends on DB forecast (how many rows and other)  
+To force MySQL to use or ignore an index listed in the possible_keys column, use FORCE INDEX, USE INDEX, or IGNORE INDEX  
+Below is B-Tree Index Characteristics
+
+If it is very likely that a long string column has a unique prefix on the first number of characters, it is better to index only this prefix
+
+No index used
+```sql
+select *
+from user
+where phone = '79850796866' or konsole_pro_cabinet_id = 1;
+
+/* index_part1 is not used */
+... WHERE index_part2=1 AND index_part3=2
+
+    /*  Index is not used in both parts of the WHERE clause  */
+... WHERE index=1 OR A=10
+
+    /* No index spans all rows  */
+... WHERE index_part1=1 OR index_part2=10
+
+```
+
+Index used
+```sql
+select *
+from user
+where phone = '79850796866' or phone = '79586301569' and konsole_pro_cabinet_id = 1
+```
 
 ### Composite indexes
+- The first part of the index should be the column most used. 
+- If you always use many columns when selecting from the table, the first column in the index should be the one with the most duplicates, to obtain better compression of the index.
+- up to 16 columns
+- As an alternative to a composite index, you can introduce a column that is “hashed” based on information from other columns.
+
 if you have a three-column index on (col1, col2, col3), you have indexed search capabilities on (col1), (col1, col2), and (col1, col2, col3)
 
 - All fields in index included in where (UNIQUE_INDEX_SCAN cost = 24)
@@ -92,6 +127,7 @@ from user
 
 ### Index in order by (Sorting)
 
+When DB can get all info from index then index can be used.  
 In that cases FULL_INDEX_SCAN used to sort 
 ```sql
 select * from user
@@ -104,7 +140,6 @@ order by address_id;
 ```
 
 But not here when we add more fields in select (Table scan used)
-When DB can get all info from index then index can be used
 ```sql
 select address_id, role_id from user
 order by address_id;
@@ -136,6 +171,51 @@ from user
          USE INDEX (roleId_status_entityId)
 order by entity_id
 ```
+
+#### Invisible Indexes
+Indexes are visible by default. To control visibility explicitly use a VISIBLE or INVISIBLE keyword.
+Invisible index don't used in read operations, but still maintained for write and update operations. 
+Can be used to test DB index performance.
+
+#### Descending Indexes
+```sql
+CREATE TABLE t
+(
+    c1 INT,
+    c2 INT,
+    INDEX idx1 (c1 ASC, c2 ASC),
+    INDEX idx2 (c1 ASC, c2 DESC),
+    INDEX idx3 (c1 DESC, c2 ASC),
+    INDEX idx4 (c1 DESC, c2 DESC)
+);
+
+ORDER BY c1 ASC, c2 ASC;    -- optimizer can use idx1
+ORDER BY c1 DESC, c2 DESC; -- optimizer can use idx4
+ORDER BY c1 ASC, c2 DESC; -- optimizer can use idx2
+ORDER BY c1 DESC, c2 ASC; -- optimizer can use idx3
+```
+
+#### Index with LIKE
+```sql
+SELECT * FROM tbl_name WHERE key_col LIKE 'Patrick%'; -- index can be used
+SELECT * FROM tbl_name WHERE key_col LIKE 'Pat%_ck%'; -- index can be used
+
+SELECT * FROM tbl_name WHERE key_col LIKE '%Patrick%'; -- no index
+SELECT * FROM tbl_name WHERE key_col LIKE other_col; -- no index
+```
+
+### Base rules for DB
+- keep tables small
+- avoid null
+- use the most efficient (smallest) data types possible
+- use indexes
+
+### Explain
+raw format columns 
+- Type. if value = ALL it's mean full table scan.
+- Rows - estimate of rows to be examined
+- Filtered. Percentage of rows filtered by table condition max value 100% which means no filtering of rows occurred
+- Extra. This column contains additional information about how MySQL resolves the query
 
 ### How to keep money in DB
 In DB use decimal with precision you need.

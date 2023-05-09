@@ -39,6 +39,7 @@ ctr + E resent files
 Ctrl + q
 Часто использую для стандартных функций, чтобы посмотреть порядок параметров и краткую информацию
 Иногда для методов проекта тоже, но там чаще перехожу в сам код.
+Так же работает для отображения определения таблицы (DDL Data Definition Language) в панели Базы данных
 тут скриншот
 
 Переход к нужной строке
@@ -46,7 +47,7 @@ Ctr + G
 
 
 ctr + b go to declaration or usage
-
+Так же работает для отображения определения таблицы (DDL Data Definition Language) в панели Базы данных
 
 ctr + alt + z revert changes for git
 ctr + shift + v paste from buffer

@@ -7,7 +7,7 @@ Entity/model (User, Orders)
 
 - Require the minimum amount of data needed to behave consistently.  
   Most properties should be required in constructor. Fewer setters or assignment.
-- Private properties
+- Private properties or readonly
 - Validate the domain invariants (exm. longitude is float between -180 and 180).  
   Throw exception on wrong params.
 - Use one or more named constructors instead of bool params in constructor

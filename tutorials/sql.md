@@ -13,6 +13,11 @@ group by schedule_template_id, hour_part
 order by schedule_template_id, hour_part;
 ```
 
+get Timestamp diff in seconds
+```sql
+SELECT TIMESTAMPDIFF(SECOND, NOW(), `expired_at`) from table_name
+```
+
 ### CTE example
 ```sql
 WITH ARRIVED AS (SELECT `order_id`, `manager_id`, `created_at`
@@ -34,8 +39,7 @@ from ARRIVED
 inner join LEAVED on ARRIVED.order_id = LEAVED.order_id and ARRIVED.manager_id = LEAVED.manager_id
 ```
 ## Indexes
-Most MySQL indexes (PRIMARY KEY, UNIQUE, INDEX, and FULLTEXT) are stored in B-trees
-One.  
+Most MySQL indexes (PRIMARY KEY, UNIQUE, INDEX, and FULLTEXT) are stored in B-trees one.  
 Two or more indexes can be used together it depends on DB forecast (how many rows and other)  
 To force MySQL to use or ignore an index listed in the possible_keys column, use FORCE INDEX, USE INDEX, or IGNORE INDEX  
 Below is B-Tree Index Characteristics
@@ -162,7 +166,7 @@ Index Scan
 select role_id, status, entity_id
 from user
          USE INDEX (roleId_status_entityId)
-order by entity_id, status
+order by entity_id, status # possibly covering index used
 ```
 Full scan
 ```sql

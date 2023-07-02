@@ -18,7 +18,7 @@ get Timestamp diff in seconds
 SELECT TIMESTAMPDIFF(SECOND, NOW(), `expired_at`) from table_name
 ```
 
-### CTE example
+### CTE (common table expression) example
 ```sql
 WITH ARRIVED AS (SELECT `order_id`, `manager_id`, `created_at`
                  FROM `order_history`
@@ -37,6 +37,43 @@ WITH ARRIVED AS (SELECT `order_id`, `manager_id`, `created_at`
 SELECT ARRIVED.order_id, ARRIVED.manager_id
 from ARRIVED
 inner join LEAVED on ARRIVED.order_id = LEAVED.order_id and ARRIVED.manager_id = LEAVED.manager_id
+```
+### CTE with window function
+solution for https://www.codewars.com/kata/649563164b1bbf004be34cd6/sql
+```sql
+with score as (select student_id, sum(score) as total_score
+               from courses
+               where course_name in ('Math', 'Science')
+               group by student_id),
+     my_rank as (select *
+                 from students
+                 inner join score on score.student_id = students.id)
+
+select rank() over (order by total_score desc, student_id asc) as rank,
+student_id, name, total_score
+from my_rank
+```
+### Recursive CTE
+solution for https://www.codewars.com/kata/6486fc7924f768003c0b0f31/sql
+```sql
+with recursive rec_cte as (
+  select employees.id, employees.name, employees.manager_id, '' as management_chain
+  from employees
+  where employees.manager_id is null
+  
+  union all
+  
+  select e.id, e.name, e.manager_id,
+    case when rec_cte.management_chain = '' then rec_cte.name || ' (' || rec_cte.id || ')'
+    else
+    rec_cte.management_chain || ' -> ' || rec_cte.name || ' (' || rec_cte.id || ')'
+    end as management_chain 
+  from employees as e
+  inner join rec_cte on rec_cte.id = e.manager_id
+)
+select id, name, management_chain
+from rec_cte
+order by rec_cte.id;
 ```
 ## Indexes
 Most MySQL indexes (PRIMARY KEY, UNIQUE, INDEX, and FULLTEXT) are stored in B-trees one.  

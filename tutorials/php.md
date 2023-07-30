@@ -11,7 +11,7 @@ __toString(), __debugInfo()
 
 All magic methods, with the exception of __construct(), __destruct(), and __clone(), must be declared as public
 
-#### __sleep() | __wakeup() | __serialize() and __unserialize()
+### __sleep() | __wakeup() | __serialize() and __unserialize()
 
 function serialize()/unserialize() checks if class have methods
 
@@ -107,13 +107,18 @@ This method is called by var_dump() when dumping an object to get the properties
 isn't defined on an object, then all public, protected and private properties will be shown.
 
 ### __clone()
+
 An object copy is created by using the clone keyword (which calls the object's __clone() method if possible).
+
 ```php
 $copy_of_object = clone $object;
 ```
+
 When an object is cloned, PHP will perform a shallow copy of all of the object's properties. Any properties that are
-references to other variables will remain references. 
-Main purpose to check for references object and clean some unnecessary data 
+references to other variables will remain references.
+Main purpose to check for references object and clean some unnecessary data
+
+yii examples
 ```php
     /**
      * This method is called after the object is created by cloning an existing one.
@@ -125,7 +130,9 @@ Main purpose to check for references object and clean some unnecessary data
         $this->_eventWildcards = [];
         $this->_behaviors = null;
     }
+```
 
+```php
     public function __clone()
     {
         if (is_object($this->query)) {
@@ -135,3 +142,37 @@ Main purpose to check for references object and clean some unnecessary data
         parent::__clone();
     }
 ```
+
+### __call(), __callStatic()
+__call() is triggered when invoking inaccessible methods in an object context.  
+__callStatic() is triggered when invoking inaccessible methods in a static context.  
+
+example from yii
+```php
+    /**
+     * Calls the named method which is not a class method.
+     * This method will check if any attached behavior has
+     * the named method and will execute it if available.
+     * @param string $name the method name
+     * @param array $params method parameters
+     * @return mixed the method return value
+     * @throws UnknownMethodException when calling unknown method
+     */
+    public function __call($name, $params)
+    {
+        $this->ensureBehaviors();
+        foreach ($this->_behaviors as $object) {
+            if ($object->hasMethod($name)) {
+                return call_user_func_array([$object, $name], $params);
+            }
+        }
+        throw new UnknownMethodException('Calling unknown method: ' . get_class($this) . "::$name()");
+    }
+```
+
+### __get(), __set(), __isset(), __unset()
+Property overloading/overriding
+__set() is run when writing data to inaccessible (protected or private) or non-existing properties.  
+__get() is utilized for reading data from inaccessible (protected or private) or non-existing properties.  
+__isset() is triggered by calling isset() or empty() on inaccessible (protected or private) or non-existing properties.  
+__unset() is invoked when unset() is used on inaccessible (protected or private) or non-existing properties.   

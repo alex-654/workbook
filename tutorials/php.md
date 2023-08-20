@@ -119,6 +119,7 @@ references to other variables will remain references.
 Main purpose to check for references object and clean some unnecessary data
 
 yii examples
+
 ```php
     /**
      * This method is called after the object is created by cloning an existing one.
@@ -144,10 +145,12 @@ yii examples
 ```
 
 ### __call(), __callStatic()
+
 __call() is triggered when invoking inaccessible methods in an object context.  
-__callStatic() is triggered when invoking inaccessible methods in a static context.  
+__callStatic() is triggered when invoking inaccessible methods in a static context.
 
 example from yii
+
 ```php
     /**
      * Calls the named method which is not a class method.
@@ -171,8 +174,11 @@ example from yii
 ```
 
 ### __get(), __set(), __isset(), __unset()
+
 Property overloading/overriding
-__set() is run when writing data to inaccessible (protected or private) or non-existing properties.  
-__get() is utilized for reading data from inaccessible (protected or private) or non-existing properties.  
-__isset() is triggered by calling isset() or empty() on inaccessible (protected or private) or non-existing properties.  
-__unset() is invoked when unset() is used on inaccessible (protected or private) or non-existing properties.   
+
+- __set() is run when writing data to inaccessible (protected or private) or non-existing properties.
+- __get() is utilized for reading data from inaccessible (protected or private) or non-existing properties.
+- __isset() is triggered by calling isset() or empty() on inaccessible (protected or private) or non-existing
+  properties.
+- __unset() is invoked when unset() is used on inaccessible (protected or private) or non-existing properties.   

@@ -48,9 +48,6 @@ final class Quantity
     $newQuantity = $originalQuantity->add(Quantity::fromInt(500, 2));
 ```
 
-### DTO
-
-No strict rules for DTO. If language allow, mark public properties as read-only/write-once.
 
 - Most objects that are not entities should be implemented as immutable value objects
 - A modifier on an immutable object should return a modified copy.
@@ -85,3 +82,7 @@ final class SalesOrder
   - public withPassword(string plainTextPassword): User
 - Use internally recorded events to verify changes on mutable objects
 - Don’t implement fluent interfaces on mutable objects. It's violate CQS principle (return object instead of void)
+
+### DTO
+
+No strict rules for DTO. If language allow, mark public properties as read-only/write-once.

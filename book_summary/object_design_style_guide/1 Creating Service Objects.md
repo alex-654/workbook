@@ -32,6 +32,6 @@ Service objects
 Profit
 
 - Easy replace dependencies in test or in DI container
-- Grasp all dependencies in one place
+- Grasp all dependencies in one place (more vivid)
 - More efficiency in code
 - Less if

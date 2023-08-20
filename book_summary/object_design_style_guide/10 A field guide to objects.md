@@ -62,7 +62,7 @@ An object is a value object
 
 An object is an event listener . . .
 
-- if it’s an immutable service, with its dependencies injected, and
+- if it’s an immutable service, with its dependencies injected
 - if it has at least one method which accepts a single argument that is a domain event.
 
 They can be used to notify other services about things that have happened inside the write model.

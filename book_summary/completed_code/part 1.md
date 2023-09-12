@@ -39,7 +39,7 @@ architecture is described in a single document referred to as the “architectur
   Exm, suppose the system is required to follow a business rule that customer information
   should be no more than 30 seconds out of date.
 - User Interface Design
-- Resource Management (database connections, threads, and handles, memory management)
+- Resource Management (database connections, threads, memory management)
 - Security
 - Performance
   If certain areas require the use of specific algorithms or data
@@ -53,11 +53,13 @@ architecture is described in a single document referred to as the “architectur
 - Error Processing
 - Change Strategy
 
-Good software architecture is largely machine and language independent.
-The architecture should explicitly identify risky areas. It should explain why they’re risky and what steps have been
-taken to minimize the risk.  
-The architecture should describe other class designs that were considered and give
-reasons for preferring the organization that was chosen
+More
+- Good software architecture is largely machine and language independent.
+- The architecture should explicitly identify risky areas.   
+  It should explain why they’re risky and what steps have been
+  taken to minimize the risk.
+- The architecture should describe other class designs that were considered and give
+  reasons for preferring the organization that was chosen
 
 ### 3.6 Amount of Time to Spend on Upstream Prerequisites
 

@@ -10,14 +10,14 @@ maximizes the benefit you will receive from it.
 
 Design is the activity that links requirements to coding and debugging.
 
-**Design Is a Wicked Problem**
+**Design Is a Wicked Problem**  
 Example with Tacoma Narrows bridge.
 Until the bridge collapsed, its engineers didn’t know that aerodynamics needed to be considered to such an extent.
 
 You have to “solve” the problem once in order to clearly define it and then solve it again to create a solution that
 works.
 
-**Design Is a Sloppy Process (Even If it Produces a Tidy Result)**
+**Design Is a Sloppy Process (Even If it Produces a Tidy Result)**  
 Design is sloppy because you take many false steps and go down many blind alleys. Indeed,
 making mistakes is the point of design it’s cheaper to make mistakes and correct designs.
 
@@ -46,47 +46,44 @@ Humans have an easier time comprehending several simple pieces of information th
 The bottom line is that programmers who compensate for inherent human limitations write code that’s easier for
 themselves and others to understand and that has fewer errors.
 
-**Desirable Characteristics of a Design**
+**Desirable Characteristics of a Design**  
 Here’s a list of internal design characteristics:
 
 - Minimal complexity
 - Ease of maintenance
 - Loose coupling  
   means designing so that you hold connections among different parts of a program to a minimum.
-- Extensibility
+- Extensibility  
   You can change a piece of a system without affecting other pieces.
 - Reusability
-  means designing the system so that you can reuse pieces of it in other systems.
-- High fan-in
-  High fan-in refers to having a high number of classes that use a given
-  class. High fan-in implies that a system has been designed to make good use of utility
+- High fan-in  
+  refers to having a high number of classes that use a given class. High fan-in implies that a system has been designed to make good use of utility
   classes at the lower levels in the system.
-- Low-to-medium fan-out
+- Low-to-medium fan-out  
   means having a given class use a low-to-medium number of other classes. High fan-out (more than
   about seven) indicates that a class uses a large number of other classes and may therefore be overly complex.
 - Portability
-- Leanness
+- Leanness  
   Voltaire said that a book is finished not when nothing more can be added but when nothing more can be taken away.
-- Stratification
+- Stratification  
   Design the system so that you can view it at one level without dipping into other levels.
-- Standard techniques
+- Standard techniques  
   Try to give the whole system a familiar feeling by using standardized, common approaches.
 
 ## 5.3 Design Building Blocks: Heuristics
 
-- Find Real-World Object
+- **Find Real-World Object**  
   object-oriented approach, which focuses on identifying real-world and synthetic objects
-- Form Consistent Abstractions
+- **Form Consistent Abstractions**  
   Abstraction is the ability to engage with a concept while safely ignoring some of its
-  details—handling different details at different levels. Any time you work with an aggregate, you’re working with an
-  abstraction. If you refer to an object as a “house” rather
+  details—handling different details at different levels. If you refer to an object as a “house” rather
   than a combination of glass, wood, and nails, you’re making an abstraction.
-- Encapsulate Implementation Details
-  Encapsulation picks up where abstraction leaves off. Abstraction says, “You’re allowed
-  to look at an object at a high level of detail.” Encapsulation says, “Furthermore, you
-  aren’t allowed to look at an object at any other level of detail.”
-- Inherit - When Inheritance Simplifies the Design
-- Hide Secrets (Information Hiding)
+- **Encapsulate Implementation Details**  
+  Encapsulation picks up where abstraction leaves off.  
+  Abstraction says, “You’re allowed to look at an object at a high level of detail.”  
+  Encapsulation says, “Furthermore, you aren’t allowed to look at an object at any other level of detail.”
+- **Inherit** - When Inheritance Simplifies the Design
+- **Hide Secrets** (Information Hiding)  
   Asking about what needs to be hidden supports good design decisions at all levels.
   Two types of hiding
     - Hiding complexity so that your brain doesn't have to deal with it
@@ -95,9 +92,9 @@ Here’s a list of internal design characteristics:
 **Identify Areas Likely to Change**  
 The goal is to isolate unstable areas so that the effect of a change will be limited to one routine, class, or package
 
-- Identify items that seem likely to change.
-- Separate items that are likely to change
-- Isolate(create interface) items that seem likely to change.
+- **Identify** items that seem likely to change.
+- **Separate** items that are likely to change
+- **Isolate** (create interface) items that seem likely to change.
 
 To find most changed files on git repo - https://rmcreative.ru/blog/post/git-churn
 

@@ -40,7 +40,6 @@ travelData.Print();
 
 - References to each object are kept close together;
 - The number of lines of code in which the objects are “live” is small
-- The number of lines of code in which the objects are “live” is small
 
 ## Using Conditionals
 
@@ -65,7 +64,8 @@ therefore eliminating any chance of errors in the loop-housekeeping arithmetic.
 - Put initialization code directly before the loop. The Principle of Proximity advocates putting related statements
   together
 - Make each loop perform only one function
-- Use break and continue only with caution Use of break eliminates the possibility of
+- Use break and continue only with caution.  
+  Use of break eliminates the possibility of
   treating a loop as a black box. Limiting yourself to only one statement to control a
   loop’s exit condition is a powerful way to simplify your loops. Using a break forces the
   person reading your code to look inside the loop for an understanding of the loop control
@@ -99,4 +99,49 @@ A or not B         not ( not A and B )
 A or B             not ( not A and not B )
 ```
 
-19.2 Compound Statements
+### 19.4 Taming Dangerously Deep Nesting
+
+More generally, complicated code is a sign that you don’t understand your program
+well enough to make it simple. Deep nesting is a warning sign that indicates a need to
+break out a routine or redesign the part of the code that’s complicated.
+
+### 19.5 A Programming Foundation: Structured Programming
+
+The term “structured programming” originated in a landmark paper, “Structured Pro-
+gramming,” presented by Edsger Dijkstra
+
+Structured programming is a simple idea that is still relevant: you can build any
+program out of a combination of sequences, selections, and iterations.
+
+The Three Components of Structured Programming
+
+- Sequence
+- Selection (if-then-else)
+- Iteration (loops)
+
+### 19.6 Control Structures and Complexity
+
+How to Measure Complexity
+Perhaps the most influential of the numeric techniques is
+Tom McCabe’s, in which complexity is measured by counting the number of “decision points” in a routine
+
+Techniques for Counting the Decision Points in a Routine  
+1 Start with 1 for the straight path through the routine.  
+2 Add 1 for each of the following keywords, or their equivalents: if while repeat for
+and or  
+3 Add 1 for each case in a case statement.
+
+Here’s an example:
+if ( ( (status = Success) and done ) or
+( not done and ( numLines >= maxLines ) ) ) then ...
+In this fragment, you count 1 to start, 2 for the if, 3 for the and, 4 for the or, and 5 for
+the and. Thus, this fragment contains a total of five decision points.
+
+- 0–5 The routine is probably fine.
+- 6–10 Start to think about ways to simplify the routine.
+- 10+ Break part of the routine into a second routine and call it from the first
+  routine
+
+Moving part of a routine into another routine doesn’t reduce the overall complexity of
+the program; it just moves the decision points around. But it reduces the amount of
+complexity you have to deal with at any one time.

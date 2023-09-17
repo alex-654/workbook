@@ -57,7 +57,8 @@ Here’s a list of internal design characteristics:
   You can change a piece of a system without affecting other pieces.
 - Reusability
 - High fan-in  
-  refers to having a high number of classes that use a given class. High fan-in implies that a system has been designed to make good use of utility
+  refers to having a high number of classes that use a given class. High fan-in implies that a system has been designed
+  to make good use of utility
   classes at the lower levels in the system.
 - Low-to-medium fan-out  
   means having a given class use a low-to-medium number of other classes. High fan-out (more than
@@ -76,7 +77,8 @@ Here’s a list of internal design characteristics:
   object-oriented approach, which focuses on identifying real-world and synthetic objects
 - **Form Consistent Abstractions**  
   Abstraction is the ability to engage with a concept while safely ignoring some of its
-  details—handling different details at different levels. If you refer to an object as a “house” rather
+  details—handling different details at different levels.   
+  If you refer to an object as a “house” rather
   than a combination of glass, wood, and nails, you’re making an abstraction.
 - **Encapsulate Implementation Details**  
   Encapsulation picks up where abstraction leaves off.  
@@ -134,8 +136,8 @@ A picture is worth 1000 words—kind of.
   question.  
   Prototyping also works poorly when the design question is not specific enough. A
   design question like “Will this database framework work?” does not provide enough direction for prototyping.
-- Collaborative Design
-  In design, two heads are often better than one.
+- Collaborative Design  
+  Two heads are often better than one.
 - Capturing Your Design Work
   Insert design documentation into the code itself
 
@@ -171,7 +173,7 @@ Employee LastItem()
 
 Better
 
-```apacheconf
+```
 class Employee
 void AddEmployee( Employee employee );
 void RemoveEmployee( Employee employee );
@@ -222,7 +224,7 @@ Avoid classes named after verbs.
 Key points:
 
 - Class interfaces should provide a consistent abstraction.
-- A class interface should hide something—a system interface, a design decision,
+- A class interface should hide something — a system interface, a design decision,
   or an implementation detail.
 - Inheritance is a useful tool, but it adds complexity
 - Classes are your primary tool for managing complexity. Give their design as

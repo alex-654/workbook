@@ -6,19 +6,13 @@ Declare all variables. Don't use implicit declarations.
 
 ### 10.3 Guidelines for Initializing Variables
 
-- Initialize each variable close to where it’s first used
+- Initialize each variable close to where it’s first used.  
   This is an example of the Principle of Proximity: keep related actions together
 
 ```
 Dim accountIndex As Integer
 accountIndex = 0
-' code using accountIndex
-...
-
-Dim total As Double
-total = 0.0
-' code using total
-...
+//code using accountIndex
 ```
 
 Another problem with the first approach is that throwing all the initializations
@@ -80,10 +74,10 @@ titleBar.color = ReadTitleBarColor();
 - Check for integer overflow
 
 ```
-Signed 8-bit -128 through 127
-Unsigned 8-bit 0 through 255
-Signed 16-bit -32,768 through 32,767
-Unsigned 16-bit 0 through 65,535
+Signed 8-bit -128 through 127  | 2^7
+Unsigned 8-bit 0 through 255   | 2^8
+Signed 16-bit -32,768 through 32,767 | 2^15
+Unsigned 16-bit 0 through 65,535     | 2^16
 Signed 32-bit -2,147,483,648 through 2,147,483,647
 Unsigned 32-bit 0 through 4,294,967,295
 Signed 64-bit -9,223,372,036,854,775,808 through 9,223,372,036,854,775,807
@@ -137,7 +131,7 @@ if(abs($a-$b) < $epsilon) {
 
 Some of the brightest people in computer science have suggested that
 arrays never be accessed randomly, but only sequentially. Their argument is that random accesses in arrays are similar
-to random gotos in a program: such accesses tend to be undisciplined, error-prone, and hard to prove correct.
+to random gotos in a program: such accesses tend to be undisciplined, error-prone, and hard to prove correct.  
 Consider using container classes that you can access sequentially—sets, stacks, queues, and so on—as alternatives before
 you automatically choose an array.
 

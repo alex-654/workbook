@@ -48,7 +48,7 @@ travelData.Print();
 - Write the nominal path through the code first; then write the unusual cases
 - Put the normal case after the if rather than after the else
 - Simplify complicated tests with boolean function calls
-- In case Use the default clause to detect errors
+- In case. Use the default clause to detect errors
 
 ## Controlling Loops
 
@@ -107,8 +107,7 @@ break out a routine or redesign the part of the code that’s complicated.
 
 ### 19.5 A Programming Foundation: Structured Programming
 
-The term “structured programming” originated in a landmark paper, “Structured Pro-
-gramming,” presented by Edsger Dijkstra
+The term “structured programming” originated in a landmark paper, “Structured Programming,” presented by Edsger Dijkstra
 
 Structured programming is a simple idea that is still relevant: you can build any
 program out of a combination of sequences, selections, and iterations.

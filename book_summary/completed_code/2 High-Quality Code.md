@@ -129,8 +129,8 @@ A picture is worth 1000 words—kind of.
   ripples back to the top, and those ripples can make things more complex than they
   really needed to be. Bottom up tends to start complex, but identifying that complexity
   early on leads to better design of the higher-level classes.
-  In the final analysis, top-down and bottom-up design aren’t competing strategies they’re mutually beneficial. Design
-  is a heuristic process, which means that no solution is guaranteed to work every time.
+  In the final analysis, top-down and bottom-up design aren’t competing strategies they’re mutually beneficial.  
+  Design is a heuristic process, which means that no solution is guaranteed to work every time.
 - Experimental Prototyping
   works poorly when developers aren’t disciplined about writing the absolute minimum of code needed to answer a
   question.  
@@ -192,7 +192,7 @@ Employee LastEmployee();
   with the other half of the data. In such a case, you really have two classes masquerading as one.
   Break them up!
 - Semantic violations
-  Don’t make assumptions about the class’s users. Make interfaces programmatic rather than semantic when possible
+  Don’t make assumptions about the class’s users. Make interfaces programmatic rather than semantic when possible.  
   The semantic part of the interface consists of the assumptions about how the interface
   will be used, which cannot be enforced by the compiler. The semantic interface includes
   considerations such as “RoutineA must be called before RoutineB”
@@ -202,12 +202,12 @@ Employee LastEmployee();
   provide more insight into class design than focusing on class cohesion.
 - Good Encapsulation
     - Minimize accessibility of classes and members
-    - Don’t expose member data in public
+    - Don’t expose member data in public.  
       Abstraction and encapsulation are related because, without encapsulation, abstraction tends to
       break down. In my experience, either you have both abstraction and encapsulation or
       you have neither. There is no middle ground.
       With true encapsulation, programmers would not be able to see implementation details at all
-- Favor read-time convenience to write-time convenience
+- Favor read-time convenience to write-time convenience.  
   Favoring a technique that speeds write-time convenience at the expense of read-time convenience is a false economy
 
 ## 6.3 Design and Implementation Issues

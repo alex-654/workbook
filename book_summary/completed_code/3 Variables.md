@@ -8,18 +8,9 @@ Declare all variables. Don't use implicit declarations.
 
 - Initialize each variable close to where it’s first used.  
   This is an example of the Principle of Proximity: keep related actions together
-
-```
-Dim accountIndex As Integer
-accountIndex = 0
-//code using accountIndex
-```
-
-Another problem with the first approach is that throwing all the initializations
-together creates the impression that all the variables are used throughout the whole
-routine when in fact done is used only at the end.
-More error-prone specially on code modification
-
+  Throwing all the initializations together creates the impression that all the variables are used throughout the whole
+  routine when in fact done is used only at the end.
+  More error-prone specially on code modification
 - Ideally, declare and define each variable close to where it’s first used
 - Use final or const when possible
 - Initialize a class’s member data in its constructor
@@ -67,6 +58,41 @@ titleBar.color = ReadTitleBarColor();
 ### 10.8 Using Each Variable for Exactly One Purpose
 
 ## Fundamental Data Types
+
+### The Power of Variable Names
+
+- A good name tends to express the what more than the how
+- If you modify a name with a qualifier like Total, Sum, Average, Max,
+  Min, Record, String, or Pointer, put the modifier at the end of the name.  
+  First, the most significant part of the variable name,
+  the part that gives the variable most of its meaning, **is at the front**, so it’s most prominent and gets read first.
+  Second, by establishing this convention, you avoid the
+  confusion you might create if you were to use both totalRevenue and revenueTotal in the
+  same program. The names are semantically equivalent, and the convention would prevent their being used as if they were
+  different.   
+  Third, a set of names like revenueTotal, expenseTotal, revenueAverage, and expenseAverage has a pleasing symmetry.
+  Finally, the consistency improves readability and eases maintenance.
+  Thus, customerCount is the total number of customers and customerIndex refers to a specific customer.
+
+#### Naming Boolean Variables
+
+- done Use done to indicate whether something is done. The variable can indicate whether a loop is done or some other
+  operation is done. Set done to false
+  before something is done, and set it to true when something is completed.
+- error Use error to indicate that an error has occurred. Set the variable to false
+  when no error has occurred and to true when an error has occurred.
+- found Use found to indicate whether a value has been found. Set found to false
+  when the value has not been found and to true once the value has been found.
+  Use found when searching an array for a value, a file for an employee ID, a list of
+  paychecks for a certain paycheck amount, and so on.
+- success or ok Use success or ok to indicate whether an operation has been successful. Set the variable to false when
+  an operation has failed and to true when an
+  operation has succeeded. If you can, replace success with a more specific name
+  that describes precisely what it means to be successful. If the program is successful when processing is complete, you
+  might use processingComplete instead. If
+  the program is successful when a value is found, you might use found instead.
+
+Prefix - is, can, has
 
 ### 12.2 Integers
 
@@ -136,9 +162,11 @@ Consider using container classes that you can access sequentially—sets, stacks
 you automatically choose an array.
 
 ### 12.9 Creating Your Own Types (Value object)
+
 Programmer-defined data types are one of the most powerful capabilities a language
 can give you to clarify your understanding of a program.
- reasons for create 
+reasons for create
+
 - To make modifications easier
 - To avoid excessive information distribution (information-hiding/encapsulation)
 

@@ -1,8 +1,8 @@
 ## 1.1. Simplifying Code
 
-Early abstractions are often not quite right.
-You can’t create the right abstraction until you fully understand the code, but the existence of the wrong abstraction
-may prevent you from ever doing so.
+- Early abstractions are often not quite right.
+- You can’t create the right abstraction until you fully understand the code, but the existence of the wrong abstraction
+  may prevent you from ever doing so.
 
 ### Consistency
 
@@ -23,12 +23,11 @@ Asking the following questions will give you insight into the potential expense 
 - You should name methods not after what they do, but after what they mean, what they represent in the context of your
   domain.
 
-When you DRY out duplication or create a method to name a
-bit of code, you add levels of indirection that make it more
-abstract. In theory these abstractions make code easier to
-understand and change, but in practice they often achieve the
-opposite. One of the biggest challenges of design is knowing
-when to stop, and deciding well requires making judgments about code
+- When you DRY out duplication or create a method to name a
+  bit of code, you add levels of indirection that make it more abstract.
+- In theory these abstractions make code easier to
+  understand and change, but in practice they often achieve the opposite.
+- One of the biggest challenges of design is knowing when to stop.
 
 ## 1.2. Judging Code
 
@@ -72,7 +71,7 @@ are more complex.
 
 https://blog.cleancoder.com/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html
 
-- ({}–>nil) no code at all->code that employs nil
+- ({}–>nil) no code at all -> code that employs nil
 - (nil->constant)
 - (constant->constant+) a simple constant to a more complex constant
 - (constant->scalar) replacing a constant with a variable or an argument
@@ -90,7 +89,7 @@ transformations.
 
 Developing the habit of writing just enough code to pass the tests forces you to write better tests.
 
-Tests are not the place for abstractions—they are the place for concretions.
+Tests are not the place for abstractions — they are the place for concretions.
 
 ## 3. Unearthing Concepts
 
@@ -99,9 +98,7 @@ with refactoring, improve them first, and then refactor.
 
 The good news is that you don’t have to be able to see the
 abstraction in advance. You can find it by iteratively applying
-a small set of simple rules. These rules are known as "Flocking
-Rules".
-Flocking RulesЖ:
+a small set of simple rules. These rules are known as "Flocking Rules":
 
 1. Select the things that are most alike.
 2. Find the smallest difference between them.
@@ -119,8 +116,6 @@ difference, that difference must represent a smaller
 abstraction within the larger one. If you can name the
 difference, you’ve identified that smaller abstraction.
 
-Name the concept, create the method, and replace the difference with a common message send.
-
-So anything that increases understandability lowers costs.
-
-Subclasses, by definition, are all that their superclasses are, plus more,
+- Name the concept, create the method, and replace the difference with a common message send.
+- So anything that increases understandability lowers costs.
+- Subclasses, by definition, are all that their superclasses are, plus more,

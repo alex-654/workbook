@@ -96,3 +96,119 @@ ____
 
 Physical Environment
 The better environment the better you can code.
+
+### 29.1 Importance of the Integration Approach
+
+If you construct and integrate software in the wrong order, it’s harder to code, harder to test, and harder to debug. If
+none of it will work until all of it works, it can seem as though it will never be finished.
+
+Proper Integration Approach can help with
+
+- better morale
+- More reliable schedule estimates
+- Improved code quality
+
+### 29.2 Integration Frequency—Phased or Incremental?
+
+Phased Integration
+Until a few years ago, phased integration was the norm. It follows these well-defined steps, or phases:
+
+1. Design, code, test, and debug each class. This step is called “unit development.”
+2. Combine the classes into one whopping-big system (“system integration”).
+3. Test and debug the whole system. This is called “system dis-integration.”
+   (Thanks to Meilir Page-Jones for this witty observation.)
+
+For small programs—no, for tiny programs—phased integration might be the best
+approach. If the program has only two or three classes, phased integration might save
+you time, if you’re lucky. But in most cases, another approach is better.
+
+Benefits of Incremental Integration
+
+- Errors are easy to locate
+  ![](./img/errors_phased_integration.png)
+- The system succeeds early in the project
+- You get improved progress monitoring
+- You can build the system with a shorter development schedule (it allows some work to be done in parallel)
+- You’ll improve customer relations
+
+### 29.3 Incremental Integration Strategies
+
+Integration-order strategies come in a variety of shapes and sizes, and none is best in
+every case.
+
+#### Top-Down Integration
+
+In top-down integration, the class at the top of the hierarchy is written and integrated
+first. Stubs have to be written to exercise the top class. Then, as classes are integrated from
+the top down, stub classes are replaced with real ones.
+All the classes at the top of the hierarchy are exercised a lot so that big,
+conceptual, design problems are exposed quickly.
+Another advantage of top-down integration is that, if you plan it carefully, you can
+complete a partially working system early in the project.
+
+Disadvantages:
+
+- low-level problem to bubble its way to the top of the system, causing high-level changes and reducing the benefit of
+  earlier integration work. Maybe at the end of the project.
+- Another problem with pure top-down integration is that you need a dump truck full of
+  stubs to integrate from the top down.
+
+#### Bottom-Up Integration
+
+If the system has conceptual design problems at the higher levels, construction won’t find them until all the detailed
+work has been done. If the design must be changed significantly, some of the low-level work
+might have to be discarded.
+
+#### Sandwich Integration
+
+![](./img/sandwich.png)
+
+**Risk-Oriented Integration (hard part first integration)**
+
+like sandwich but choose most difficult part
+
+**Feature-Oriented Integration**
+
+**T-Shaped Integration**
+![](./img/T-Shaped_Integration.png)
+
+Bottom-up, top-down, sandwich, risk-oriented, feature-oriented, T-shaped—do you get the
+feeling that people are making these names up as they go along? They are. None of these
+approaches are robust procedures that you should follow methodically from step 1 to
+step 47 and then declare yourself to be done. Like software-design approaches, they are
+heuristics more than algorithms, and rather than following any procedure dogmatically,
+you come out ahead by making up a unique strategy tailored to your specific project.
+
+### 29.4 Daily Build and Smoke Test
+
+- Do daily builds with smoke test
+- Automate the daily build and smoke test
+- Release builds in the morning
+- Build and smoke test even under pressure
+
+Continuous Integration
+“continuous” to mean “at least daily”
+
+## 30 Programming Tools
+
+A dog might be man’s best friend, but a few good tools are a programmer’s best
+friends. As Barry Boehm discovered long ago, 20 percent of the tools tend to account
+for 80 percent of the tool usage (1987b). If you’re missing one of the more helpful
+tools, you’re missing something that you could use a lot.
+
+### 30.2 Source-Code Tools
+
+Integrated Development Environments (IDEs)
+
+### 30.5 Building Your Own Programming Tools
+
+Nearly all large organizations (organizations with more than 1000 programmers) have internal tool and support groups.
+
+### 30.6 Tool Fantasyland
+
+We will always need people who can bridge the gap between the real-world problem
+to be solved and the computer that is supposed to be solving the problem. These people will be called programmers
+regardless of whether we’re manipulating machine
+registers in assembler or dialog boxes in Microsoft Visual Basic. As long as we have
+computers, we’ll need people who tell the computers what to do, and that activity will
+be called programming.

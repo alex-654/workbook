@@ -7,17 +7,16 @@ four times as many errors per thousand lines of code as small projects.
 
 ### 27.4 Effect of Project Size on Productivity
 
-At small sizes (2000 lines of code or smaller), the single biggest influence on produc-
-tivity is the skill of the individual programmer (Jones 1998). As project size increases,
+At small sizes (2000 lines of code or smaller), the single biggest influence on productivity is the skill of the
+individual programmer (Jones 1998). As project size increases,
 team size and organization become greater influences on productivity.
 
 ### 27.5 Effect of Project Size on Development Activities
 
 ![activity_proportions_size](./img/activity_proportions_size.png)
 
-Construction becomes less predominant because as project size increases, the construc-
-tion activities—detailed design, coding, debugging, and unit testing—scale up propor-
-tionately but many other activities scale up faster.
+Construction becomes less predominant because as project size increases, the construction activities—detailed design,
+coding, debugging, and unit testing—scale up proportionately but many other activities scale up faster.
 
 Here’s a list of activities that grow at a more-than-linear rate as project size increases:
 
@@ -72,8 +71,8 @@ Project better be measured. Set goals, start small.
 
 **Variation in Performance and Quality**
 
-The original study that showed huge variations in individual programming productiv-
-ity was conducted in the late 1960s by Sackman, Erikson, and Grant (1968). They
+The original study that showed huge variations in individual programming productivity was conducted in the late 1960s by
+Sackman, Erikson, and Grant (1968). They
 studied professional programmers with an average of 7 years’ experience and found
 that the ratio of initial coding time between the best and worst programmers was
 about 20 to 1, the ratio of debugging times over 25 to 1, of program size 5 to 1, and of

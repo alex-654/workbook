@@ -57,9 +57,8 @@ titleBar.color = ReadTitleBarColor();
 
 ### 10.8 Using Each Variable for Exactly One Purpose
 
-## Fundamental Data Types
 
-### The Power of Variable Names
+## 11 The Power of Variable Names
 
 - A good name tends to express the what more than the how
 - If you modify a name with a qualifier like Total, Sum, Average, Max,
@@ -93,6 +92,8 @@ titleBar.color = ReadTitleBarColor();
   the program is successful when a value is found, you might use found instead.
 
 Prefix - is, can, has
+
+## 12 Fundamental Data Types
 
 ### 12.2 Integers
 

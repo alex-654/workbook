@@ -1,42 +1,42 @@
 # Design in Construction
 
-“Design” might be just writing a class interface in pseudocode before writing the details. It might be drawing diagrams
-of a few class relationships before coding them.  
-It might be asking another programmer which design pattern seems like a better choice. Regardless of how it’s done,
-small projects benefit from careful design just as larger projects do, and recognizing design as an explicit activity
-maximizes the benefit you will receive from it.
+- “Design” might be just writing a class interface in pseudocode before writing the details. It might be drawing
+  diagrams of a few class relationships before coding them. It might be asking another programmer which design pattern
+  seems like a better choice.
+- Regardless of how it’s done, small projects benefit from careful design just as larger projects do.
+- Recognizing design as an explicit activity maximizes the benefit you will receive from it.
 
 ## 5.1 Design Challenges
 
-Design is the activity that links requirements to coding and debugging.
+- Design is the activity that links requirements to coding and debugging.
 
-**Design Is a Wicked Problem**  
-Example with Tacoma Narrows bridge.
-Until the bridge collapsed, its engineers didn’t know that aerodynamics needed to be considered to such an extent.
+- **Design Is a Wicked Problem**  
+  Example with Tacoma Narrows bridge.
+  Until the bridge collapsed, its engineers didn’t know that aerodynamics needed to be considered to such an extent.  
+  You have to “solve” the problem once in order to clearly define it and then solve it again to create a solution that
+  works.
 
-You have to “solve” the problem once in order to clearly define it and then solve it again to create a solution that
-works.
+- **Design Is a Sloppy Process (Even If it Produces a Tidy Result)**  
+  Design is sloppy because you take many false steps and go down many blind alleys. Indeed,
+  making mistakes is the point of design it’s cheaper to make mistakes and correct designs.
 
-**Design Is a Sloppy Process (Even If it Produces a Tidy Result)**  
-Design is sloppy because you take many false steps and go down many blind alleys. Indeed,
-making mistakes is the point of design it’s cheaper to make mistakes and correct designs.
+- How much detail is enough? -> “When you’re out of time.”
 
-How much detail is enough? -> “When you’re out of time.”
+- **Design Is About Tradeoffs and Priorities**  
+  Response rate or minimizing development time? a designer will choose one design.
 
-**Design Is About Tradeoffs and Priorities**  
-Response rate or minimizing development time? a designer will choose one design.
+- **Design Involves Restrictions**
 
-**Design Involves Restrictions**
+- **Design Is Nondeterministic**
 
-**Design Is Nondeterministic**
+- **Design Is a Heuristic Process**  
+  Design techniques tend to be heuristics — “rules of thumb” or “things to try that sometimes work” rather than
+  repeatable
+  processes that are guaranteed to produce predictable results.
 
-**Design Is a Heuristic Process**  
-Design techniques tend to be heuristics — “rules of thumb” or “things to try that sometimes work” rather than repeatable
-processes that are guaranteed to produce predictable results.
-
-**Design Is Emergent**  
-Designs don’t spring fully formed directly from someone’s brain. They evolve and improve through design reviews,
-informal discussions, experience writing the code itself, and experience revising the code.
+- **Design Is Emergent**  
+  Designs don’t spring fully formed directly from someone’s brain. They evolve and improve through design reviews,
+  informal discussions, experience writing the code itself, and experience revising the code.
 
 ## 5.2 Key Design Concepts
 
@@ -146,7 +146,7 @@ A picture is worth 1000 words—kind of.
 But while you can’t know the exact right amount of design with any confidence, two amounts of design are guaranteed to
 be wrong every time: designing every last detail and not designing anything at all.
 
-# Working Classes
+# 6 Working Classes
 
 ## 6.1 Class Foundations: Abstract Data Types (ADTs)
 
@@ -218,8 +218,6 @@ Law of Demeter
 - Each unit should have only limited knowledge about other units: only units "closely" related to the current unit.
 - Each unit should only talk to its friends; don't talk to strangers.
 - Only talk to your immediate friends.
-
-Avoid classes named after verbs.
 
 Key points:
 

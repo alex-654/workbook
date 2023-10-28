@@ -1,4 +1,4 @@
-# The Software-Quality Landscape
+# 20 The Software-Quality Landscape
 
 ## 20.1 Characteristics of Software Quality
 
@@ -29,9 +29,8 @@ activity that makes software development a true engineering discipline.
 ### 20.2 Techniques for Improving Software Quality
 
 - Software-quality objectives  
-  One powerful technique for improving software quality
-  is setting explicit quality objectives from among the external and internal characteristics
-  described in the previous section. Without explicit goals, programmers might work to
+  Set explicit quality objectives from among the external and internal characteristics. Without explicit goals,
+  programmers might work to
   maximize characteristics different from the ones you expect them to maximize.
 - Explicit quality-assurance activity  
   One common problem in assuring quality is that
@@ -71,7 +70,7 @@ That isn’t true because the longer a defect remains in the system, the more ex
 becomes to remove. A detection technique that finds the error earlier therefore results in
 a lower cost of fixing it.
 
-that code reviews were several times as cost-effective as testing.
+Code reviews were several times as cost-effective as testing.
 The bottom line is that an effective software-quality program must include a combination of techniques that apply to all
 stages of development. Here’s a recommended
 combination for achieving higher-than-average quality:
@@ -88,16 +87,14 @@ decrease the amount of time spent debugging and reworking the software.
 
 ### 21 Collaborative Construction
 
-“Collaborative construction” refers to pair programming, formal inspections, informal
-technical reviews, and document reading, as well as other techniques in which developers share responsibility for
-creating code and other work products.
+- “Collaborative construction” refers to pair programming, formal inspections, informal
+  technical reviews, and document reading, as well as other techniques in which developers share responsibility for
+  creating code and other work products.
 
-developers are blind to some of the trouble spots in their work, that other
-people don’t have the same blind spots, and that it’s beneficial for developers to have
-someone else look at their work
+- Developers are blind to some of the trouble spots in their work, that other
+  people don’t have the same blind spots
 
-A secondary effect is that when people know their work will
-be reviewed, they scrutinize it more carefully.
+- A secondary effect is that when people know their work will be reviewed, they scrutinize it more carefully.
 
 ## 22 Developer Testing
 
@@ -107,9 +104,11 @@ be reviewed, they scrutinize it more carefully.
 
 ### 22.2 Recommended Approach to Developer Testing
 
-Design the test cases along with the product. This can help avoid errors in require-
-ments and design, which tend to be more expensive than coding errors. Plan to test
-and find defects as early as possible because it’s cheaper to fix defects early.
+- Design the test cases along with the product.  
+  This can help avoid errors in requirements and design, which tend to be
+  more expensive than coding errors.
+- Plan to test
+  and find defects as early as possible because it’s cheaper to fix defects early.
 
 Test First or Test Last?
 
@@ -125,10 +124,8 @@ The art of testing is that of picking the test cases most likely to find errors.
 
 ### 22.4 Typical Errors
 
-- 80 percent of the errors are found in 20 percent of a project’s classes or rou-
-  tines (Endres 1975, Gremillion 1984, Boehm 1987b, Shull et al 2002).
-- 50 percent of the errors are found in 5 percent of a project’s classes (Jones
-  2000).
+- 80 percent of the errors are found in 20 percent of a project’s classes or routines (Endres 1975, Gremillion 1984, Boehm 1987b, Shull et al 2002).
+- 50 percent of the errors are found in 5 percent of a project’s classes (Jones 2000).
 
 - In the long run, the best way to improve your testing process is to make it regular, measure it, and use what you
   learn to improve it.
@@ -189,7 +186,8 @@ later. When it’s complete and correct, check the performance. If the program l
 optimize until you know you need to.
 
 ## 26 Code-Tuning Techniques
-anti-refactorings 
+
+anti-refactorings
 
 - Putting the Busiest Loop on the Inside
 - Substitute table lookups for complicated logic.

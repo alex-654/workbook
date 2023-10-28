@@ -26,10 +26,9 @@ remember important features of programs.
 
 ![](./img/layout.png)
 
-Looks attractive, but changes to many lines when code reformatted, and on CR why more lines changed then should be.
+Looks attractive, but changes to many lines when code reformatted, and on CR way more lines changed then should be.
 
-Comments done well can greatly enhance a program’s readability; comments done
-poorly can actually hurt it.
+- Comments done well can greatly enhance a program’s readability; comments done poorly can actually hurt it.
 
 ## 32 Self-Documenting Code
 
@@ -59,7 +58,7 @@ elementList[ element ] = elementList[ element ] >> 1;
 ```
 
 - Avoid abbreviations
-- Don’t comment tricky code; rewrite it
+- Don’t comment tricky code; rewrite it.  
   One study found that areas of source code with large numbers of comments also
   tended to have the most defects and to consume the most development effort.
   When someone says, “This is really tricky code,” I hear them say, “This is really bad code.”
@@ -90,7 +89,7 @@ to help programmers get a high-level view of the program.
 
 Key Points
 
-- The question of whether to comment is a legitimate one. Done poorly, commenting is a waste of time and sometimes
+- Done poorly, commenting is a waste of time and sometimes
   harmful. Done well, commenting is worthwhile.
 - The source code should contain most of the critical information about the program. As long as the program is running,
   the source code is more likely than any

@@ -9,7 +9,7 @@ The Joys of the Craft of programming
 - making things that are useful to other people
 - solve complex puzzle-like
 - always learning
-- delight of working in such a tractable medium. Progrmmer builds his castles in the air,
+- delight of working in such a tractable medium. Programmer builds his castles in the air,
   from air, creating by exertion of the imagination.
 
 The Woes of the Craft
@@ -29,11 +29,10 @@ The Woes of the Craft
 - More programming projects have gone awry for lack of
   calendar time than for all other causes combined.
 - All programmers are optimists.
-
 - If task can be partitioned added more people can lead to more speed in project, but with correction on
   training and intercommunication.
 - When added people to project communication links grows not linear more exponentially
-- Better add people it start of project then at the end.
+- Better add people at start of project then at the end.
 
 - Brooks's Law (Oversimplifying):  
   **Adding manpower fo a late software project makes it later.**
@@ -177,7 +176,7 @@ in operating in nonprotective environments. For example, a laboratory process fo
 pilot plant of 10,000 gallon/day capacity before being used for a 2,000,000 gallon/day community water system.
 
 In most projects, the first system built is barely usable. It may be too slow, too big, awkward to use, or all three.
-There is no alternative but to start again, smarting but smarter, and build a redesigned version in which these problems
+There is no alternative but to start again, starting but smarter, and build a redesigned version in which these problems
 are solved.
 The discard and redesign may be done in one lump, or piece-by-piece, but it will be done.
 
@@ -203,7 +202,7 @@ The discard and redesign may be done in one lump, or piece-by-piece, but it will
 
 ## 12 Sharp Tools
 
-_A good workman is known by his fools._ proverb
+_A good workman is known by his tools._ proverb
 This chapter looks outdated.
 
 ## 13 The Whole and the Parts

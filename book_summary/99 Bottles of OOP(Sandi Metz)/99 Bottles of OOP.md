@@ -93,12 +93,11 @@ Tests are not the place for abstractions — they are the place for concretions.
 
 ## 3. Unearthing Concepts
 
-If your tests are flawed such that they interfere
-with refactoring, improve them first, and then refactor.
+If your tests are flawed such that they interfere with refactoring, improve them first, and then refactor.
 
 The good news is that you don’t have to be able to see the
-abstraction in advance. You can find it by iteratively applying
-a small set of simple rules. These rules are known as "Flocking Rules":
+abstraction in advance. You can find it by iteratively applying a small set of simple rules.
+These rules are known as "Flocking Rules":
 
 1. Select the things that are most alike.
 2. Find the smallest difference between them.
@@ -119,3 +118,43 @@ difference, you’ve identified that smaller abstraction.
 - Name the concept, create the method, and replace the difference with a common message send.
 - So anything that increases understandability lowers costs.
 - Subclasses, by definition, are all that their superclasses are, plus more,
+
+## 5. Separating Responsibilities
+
+Having multiple methods that take
+the same argument is a code smell. It’s important, however, to
+recognize that here the term "same" means same concept, not
+identical name. In an ideal world, each different concept
+would have its own unique, precise name, and there would be
+no ambiguity. Unfortunately, real world code often fails to
+meet this ideal. In long-lived applications, the same concept
+might go by several different names, or, as in this case,
+different concepts might hide behind a single name. These
+naming mistakes make it harder to notice underlying code
+smells, and now that you’re looking for patterns in the code,
+you must examine the arguments and clarify the abstractions
+that they represent.
+
+Testing for equality also
+makes the code more precise, and this precision, as you will
+soon see, enables future refactorings.
+
+As an OO practitioner, when you see a conditional, the hairs
+on your neck should stand up. You should feel entitled to send
+messages to objects, and look for a way to write code that
+allows you to do so. The above pattern means that objects are
+missing, and suggests that subsequent refactorings are needed
+to reveal them. Be on the lookout for this code shape, as it
+implies that there’s more to be done.
+This is not to say that you’ll never have a conditional in an
+object-oriented application. There is a place for conditionals in
+OO. Manageable OO applications consist of pools of small
+objects that collaborate to accomplish tasks. Collaborators
+must be brought together in useful combinations, and
+assembling these combinations requires knowing which
+objects are suitable. Some object, somewhere, must choose
+which objects to create, and this often involves a conditional.
+However, there’s a big difference between a conditional that
+selects the correct object and one that supplies behavior. The
+first is acceptable and generally unavoidable. The second
+suggests that you are missing objects in your domain.

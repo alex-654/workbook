@@ -89,6 +89,7 @@ order by rec_cte.id;
 ```
 
 ### Window function example
+
 good tutorial https://learnsql.com/blog/sql-window-functions-rows-clause/
 solution for https://www.codewars.com/kata/6035b3c78e0085002231092b/sql
 
@@ -144,6 +145,19 @@ where phone = '79850796866'
    or phone = '79586301569' and konsole_pro_cabinet_id = 1
 ```
 
+### Index types
+
+- clustered index
+- non-clustered indexes or secondary indexes
+
+A cluster index is the table itself, which enforces the order of the rows in the table.
+An InnoDB table always has a clustered index.
+
+Show info about indexes in table ```innodb_index_stats```.
+Size of primary index is size of table itself.
+innodb_index_stats.stat_name * @@innodb_page_size (16384 bit) = index_size
+Each secondary index contain primary index.
+
 ### Composite indexes
 
 - The first part of the index should be the column most used.
@@ -186,6 +200,17 @@ from user
 where role_id = 0;
 ```
 
+if we have one more column index for role_id. Cost is same, but speed a bit faster. In may example its roughly 5%
+May be it now worth it to maintain both indexes
+
+```sql
+select *
+from user
+#          USE INDEX (roleId_status_entityId)
+         USE INDEX (users_role_id)
+where role_id = 0
+```
+
 - Second field from 3 or second and third. Index not used (Full Scan cost = 12 090)
 
 ```sql
@@ -193,6 +218,15 @@ select *
 from user
          USE INDEX (roleId_status_entityId)
 where status = 1;
+```
+
+-
+
+```sql
+select *
+from user
+         USE INDEX (roleId_status_entityId)
+where role_id = 0
 ```
 
 ### covering index
@@ -204,6 +238,14 @@ cost 12090; time 14.8
 select role_id, status, entity_id
 from user
          USE INDEX (roleId_status_entityId);
+```
+
++ primary key (clustered index) in explain plan in Extra column we see Using index
+
+```php
+select role_id, status, entity_id, id
+from user
+         (roleId_status_entityId);
 ```
 
 cost 12090; time 26.7
@@ -329,7 +371,8 @@ WHERE key_col LIKE other_col; -- no index
 - keep tables small
 - avoid null
 - use the most efficient (smallest) data types possible
-- use indexes
+- use indexes but not to much
+- the more diverse the data, the more effective index
 
 ### Explain
 

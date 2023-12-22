@@ -58,3 +58,7 @@ It's not same as transaction lock on update. You lock data not on update but on 
 Other transactions are blocked from updating those rows, from doing SELECT ... FOR SHARE, or from reading the data in
 certain transaction isolation levels (SERIALIZABLE).
 When do locking read be sure to use fields with index preferably unique, to not lock all scanning rows in table.
+
+### ETC...
+
+- A transaction will timeout after 50 seconds  see innodb_lock_wait_timeout

@@ -8,9 +8,6 @@ MySQL requires that foreign key columns be indexed; if you create a table with a
 a given column, an index is created.
 Below is B-Tree Index Characteristics
 
-If it is very likely that a long string column has a unique prefix on the first number of characters, it is better to
-index only this prefix
-
 No index used
 
 ```sql
@@ -49,63 +46,6 @@ Each secondary index contain primary index.
 
 if you have a three-column index on (col1, col2, col3), you have indexed search capabilities on (col1), (col1, col2),
 and (col1, col2, col3)
-
-- All fields in index included in where (UNIQUE_INDEX_SCAN cost = 24)
-
-```sql
-select *
-from user
-         USE INDEX (roleId_status_entityId)
-where role_id = 0
-  and status = 1
-  and entity_id = 600;
-```
-
-- Two fields from 3 (UNIQUE_INDEX_SCAN cost = 162)
-
-```sql
-select *
-from user
-         USE INDEX (roleId_status_entityId)
-where role_id = 0
-  and status = 1;
-```
-
-- First fields from 3 (UNIQUE_INDEX_SCAN cost = 6 500)
-
-```sql
-select *
-from user
-         USE INDEX (roleId_status_entityId)
-where role_id = 0;
-```
-
-if we have one more column index for role_id. Cost is same, but speed a bit faster. In may example its roughly 5%
-May be it now worth it to maintain both indexes
-
-```sql
-select *
-from user
-#          USE INDEX (roleId_status_entityId)
-         USE INDEX (users_role_id)
-where role_id = 0
-```
-
-- Second field from 3 or second and third. Index not used (Full Scan cost = 12 090)
-
-```sql
-select *
-from user
-         USE INDEX (roleId_status_entityId)
-where status = 1;
-```
-
-```sql
-select *
-from user
-         USE INDEX (roleId_status_entityId)
-where role_id = 0
-```
 
 ### covering index
 
@@ -152,12 +92,6 @@ When DB can get all info from index then index can be used.
 In that cases FULL_INDEX_SCAN used to sort
 
 ```sql
-select *
-from user
-order by id; # (primary id a bit different from other indexes)
-```
-
-```sql
 select address_id
 from user
 order by address_id;
@@ -177,6 +111,7 @@ Index can be used
 SELECT a
 FROM t1
 ORDER BY a;
+
 SELECT ABS(a) AS b
 FROM t1
 ORDER BY a;
@@ -188,26 +123,6 @@ Can't be
 SELECT ABS(a) AS a
 FROM t1
 ORDER BY a;
-```
-
-#### Complex index
-
-Index Scan
-
-```sql
-select role_id, status, entity_id
-from user
-         USE INDEX (roleId_status_entityId)
-order by entity_id, status # possibly covering index used
-```
-
-Full scan
-
-```sql
-select role_id, status, entity_id, address_id
-from user
-         USE INDEX (roleId_status_entityId)
-order by entity_id
 ```
 
 #### Invisible Indexes
@@ -230,12 +145,9 @@ CREATE TABLE t
 );
 
 ORDER BY c1 ASC, c2 ASC;    -- optimizer can use idx1
-ORDER BY c1
-DESC, c2 DESC; -- optimizer can use idx4
-ORDER BY c1 ASC, c2
-DESC; -- optimizer can use idx2
-ORDER BY c1
-DESC, c2 ASC; -- optimizer can use idx3
+ORDER BY c1 DESC, c2 DESC; -- optimizer can use idx4
+ORDER BY c1 ASC, c2 DESC; -- optimizer can use idx2
+ORDER BY c1 DESC, c2 ASC; -- optimizer can use idx3
 ```
 
 #### Index with LIKE
@@ -283,7 +195,7 @@ where status = 40
   and delivery_id = 102281
   and external_id is not null;
 # Index not used as external_id column goes first in the index and it used as range. 
-# And at this index the most helpful column is delivery_id
+# And at this index the most helpful (selective) column is delivery_id
 
 select *
 from `order`

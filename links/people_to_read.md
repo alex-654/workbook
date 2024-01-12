@@ -8,3 +8,5 @@
 - https://blog.ploeh.dk/  
 - https://kore-nordmann.de/blog/1.html  
 - https://stitcher.io  Brent Roose (php features)
+- https://blog.codinghorror.com/
+- https://www.joelonsoftware.com/

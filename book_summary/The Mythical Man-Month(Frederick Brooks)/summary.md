@@ -26,8 +26,7 @@ The Woes of the Craft
 
 ## 2 The Mythical Man-Month
 
-- More programming projects have gone awry for lack of
-  calendar time than for all other causes combined.
+- More programming projects have gone away for lack of calendar time than for all other causes combined.
 - All programmers are optimists.
 - If task can be partitioned added more people can lead to more speed in project, but with correction on
   training and intercommunication.
@@ -44,7 +43,6 @@ The Woes of the Craft
 
 - Best and worst programmer performances averaged about 10:1 on productivity measurements and an amazing 5:1 on
   program speed and space measurements!
-
 - Better use one super mind then 10 average worker.
 - Performance can vary on command organization. One of way to organize is Surgical Team.
 - A team of two, with one leader, is often the best use of minds.
@@ -62,7 +60,7 @@ The Woes of the Craft
 - The separation of architectural effort from implementation is
   a very powerful way of getting conceptual integrity on very large projects.
 - In an **unconstrained implementing group**, most thought and debate goes into architectural
-  decisions, and implementation proper gets short shrift.
+  decisions, and implementation proper gets short shift.
 - A conceptually integrated system is faster to build and to test.
 
 Architecture must be carefully distinguished from implementation. As Blaauw has said, "Where architecture tells what
@@ -89,8 +87,7 @@ that everyone hears, understands, and implements the architects decisions?
 How can a group of 10 architects maintain the conceptual integrity of a system which 1000 men are building?
 
 - Even when a design team is large, the results must be reduced to writing by one or two, in order that the
-  minidecisions
-  be consistent.
+  mini-decisions be consistent.
 - It is important to explicitly define the parts of an architecture that are not prescribed as carefully as those that
   are.
 - One needs both a formal definition of a design, for precision, and a prose definition for comprehensibility.
@@ -151,7 +148,7 @@ This chapter looks outdated. More about wise system resource usage.
 ## 10 The Documentary Hypothesis
 
 No matter how small the project, however, the manager is wise to begin immediately to formalize at least mini-documents
-to serve as his data base.
+to serve as his database.
 
 - First, writing the decisions down is essential. Only when one writes do the gaps and inconsistencies appear. The act
   of writing turns out to require hundreds of mini-decisions, and it is the existence of these that distinguishes clear,
@@ -160,7 +157,7 @@ to serve as his data base.
   he took for common knowledge are totally unknown by some member of his team. Since his fundamental job is to keep
   everybody going in the same direction, his chief daily task will be communication, not
   decision-making, and his documents will immensely lighten this load.
-- Finally, a manager's documents give him a data base and checklist. By reviewing them periodically he sees where he is,
+- Finally, a manager's documents give him a database and checklist. By reviewing them periodically he sees where he is,
   and he sees what changes of emphasis or shifts in direction are needed.
 - The task of the manager is to develop a plan and then to realize it. But only the written plan is precise and
   communicable.
@@ -226,8 +223,7 @@ This chapter looks outdated.
   deceive.
 - Chronic schedule slippage is a morale-killer. Jim Mc-Carthy of Microsoft says, "If you miss one deadline, make
   sure you make the next one".
-- It is necessary to have review techniques by which the true status is made known, whether cooperatively or
-  not.
+- It is necessary to have review techniques by which the true status is made known, whether cooperatively or not.
 - As we have seen, one must get excited about a one-day slip. Such are the elements of catastrophe.
 
 A baseball manager recognizes a nonphysical talent, hustle, as an essential gift of great players and great teams. It is
@@ -240,7 +236,7 @@ forfend minor calamities.
 
 - A computer program is a message from a man to a machine.
 - But a written program has another face, that which tells its story to the human user.
-- Memory will fail.To use a program. Every user needs a prose description of the program.
+- Memory will fail. To use a program every user needs a prose description of the program.
 - Most documentation fails in giving too little overview.
   The trees are described, the bark and leaves are commented, but there is no map of the forest.
 - Self-Documenting Programs+

@@ -5,10 +5,10 @@ The core is the center of your application, the infrastructure is around it.
 
 #### Rule no 1: No dependencies on external systems.
 
-Core code doesn’t directly depend on external systems, nor does it
-depend on code written for interacting with external system.
-External systems - database, some remote web service, the system’s clock, the file system, and
-so on. Core code should be able to run without these external dependencies.
+Core code doesn’t directly depend on external systems, nor does it depend on code written for interacting with external
+system.  
+External systems - database, some remote web service, the system’s clock, the file system, and so on.  
+Core code should be able to run without these external dependencies.
 When code follows the first rule, it means you can run it in complete isolation.
 Isolation is great for testability.
 Abstraction is the go-to solution to get rid of dependencies on external systems
@@ -23,7 +23,6 @@ Exp. of dependencies on environment
 - uses global state $host = $_SERVER[’HTTP_HOST’];
 - uses static service locator $translator = Zend_Registry::get(’Zend_Translator’);
 - controllers for web applications only
-- DateTime, filesystem
 
 ```php
 // This is a proper abstraction for an object that talks to the database
@@ -50,4 +49,4 @@ final class MemberService
 “Is all code in my vendor directory infrastructure code?”
 
 - web framework, ORM yes
-- but can be same code that can be core and even not writed specificaly for you app.
+- but can be same code that can be core and even not written specifically for you app.

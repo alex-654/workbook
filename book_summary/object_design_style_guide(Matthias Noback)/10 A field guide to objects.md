@@ -130,6 +130,7 @@ injected as abstract dependencies. If we do this, we can form three useful group
 1 The infrastructure layer:
 – Controllers
 – Write and read model repository implementations
+- service that reach external system
 2 The application layer:
 – Application services
 – Command objects

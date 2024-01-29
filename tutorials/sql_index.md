@@ -3,10 +3,9 @@
 Most MySQL indexes (PRIMARY KEY, UNIQUE, INDEX, and FULLTEXT) are stored in B-trees one.  
 Two or more indexes can be used together it depends on DB forecast (how many rows and other)  
 To force MySQL to use or ignore an index listed in the possible_keys column, use FORCE INDEX, USE INDEX, or IGNORE
-INDEX  
-MySQL requires that foreign key columns be indexed; if you create a table with a foreign key constraint but no index on
-a given column, an index is created.
-Below is B-Tree Index Characteristics
+INDEX
+
+### B-Tree Index Characteristics
 
 No index used
 
@@ -209,7 +208,7 @@ where status = 40
 ### Secondary index types
 
 - Spatial Indexes (for Coordinate, Point etc.)
-- Multi-Valued Indexes (JSON arrays)
+- Multi-Valued Indexes (JSON, arrays)
 - Full-Text Indexes
 - Unique
 - Column Prefix Key Parts
@@ -258,14 +257,15 @@ WHERE key1 = 1
 ### Many-to-Many Mapping table
 
 ```sql
-    CREATE TABLE XtoY (
+    CREATE TABLE XtoY
+    (
         # No surrogate id for this table
-        x_id MEDIUMINT UNSIGNED NOT NULL,   -- For JOINing to one table
-        y_id MEDIUMINT UNSIGNED NOT NULL,   -- For JOINing to the other table
+        x_id MEDIUMINT UNSIGNED NOT NULL, -- For JOINing to one table
+        y_id MEDIUMINT UNSIGNED NOT NULL, -- For JOINing to the other table
         # Include other fields specific to the 'relation'
-        PRIMARY KEY(x_id, y_id),            -- When starting with X
-        INDEX      (y_id, x_id)             -- When starting with Y
-    ) ENGINE=InnoDB;
+        PRIMARY KEY (x_id, y_id),         -- When starting with X
+        INDEX (y_id, x_id)                -- When starting with Y
+    ) ENGINE = InnoDB;
 ```
 
 ### Tips

@@ -78,8 +78,8 @@ with recursive rec_cte as (select e.id, e.name, '' as management_chain
                                   case
                                       when rec_cte.management_chain = '' then rec_cte.name || ' (' || rec_cte.id || ')'
                                       else
-                                              rec_cte.management_chain || ' -> ' || rec_cte.name || ' (' ||
-                                              rec_cte.id || ')'
+                                          rec_cte.management_chain || ' -> ' || rec_cte.name || ' (' ||
+                                          rec_cte.id || ')'
                                       end as management_chain
                            from employees as e
                                     inner join rec_cte on rec_cte.id = e.manager_id)
@@ -124,3 +124,19 @@ raw format columns
 
 In DB use decimal with precision you need.
 In php use math functions like https://www.php.net/manual/en/ref.bc.php or library.
+
+### Foreign keys
+
+- DB rejects any INSERT or UPDATE operation that attempts to create a foreign key value in a child table if there is no
+  matching candidate key value in the parent table.
+- MySQL requires that foreign key columns be indexed;
+- if you create a table with a foreign key constraint but no index on a given column, an index is created.
+- Foreign key name must be unique in the database
+- Parent table column and child table column must be the same type
+- Referential Actions (ON UPDATE | ON DELETE) values:
+    - CASCADE
+      Delete or update the row from the parent table and automatically delete or update the matching rows in the child
+      table.  
+      ON UPDATE CASCADE make sense when parent key ist not primary_key and can be changed
+    - RESTRICT==NO ACTION (default) Rejects the delete or update operation for the parent table.
+    - SET NULL

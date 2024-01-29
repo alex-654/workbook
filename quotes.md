@@ -3,7 +3,6 @@
   _Martin Fowler_
 - Be conservative in what you do, be liberal in what you accept from others.
 - Code That Fits in Your Head
-- Optimize for change first
 - Leaders are readers.
 - "Code Tells You How, Comments Tell You Why"  
   _Jeff Atwood one of stackoverflow.com founders_
@@ -23,3 +22,6 @@
   each other. The process the team uses determines whether one person’s work supports the work of the rest of the team
   or undercuts it.  
   _Completed Code(Steve McConnell)_
+
+- Michael Feathers says:
+  To me, legacy code is simply code without tests.

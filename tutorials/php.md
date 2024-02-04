@@ -181,4 +181,33 @@ Property overloading/overriding
 - __get() is utilized for reading data from inaccessible (protected or private) or non-existing properties.
 - __isset() is triggered by calling isset() or empty() on inaccessible (protected or private) or non-existing
   properties.
-- __unset() is invoked when unset() is used on inaccessible (protected or private) or non-existing properties.   
+- __unset() is invoked when unset() is used on inaccessible (protected or private) or non-existing properties.
+
+### PHPUnit’s Mock objects (YAGNI)
+
+PHPUnit can mock interfaces
+
+```php
+<?php
+class BankAccountTest extends PHPUnit_Framework_TestCase
+{
+  public function testSendEmailWhenReceivingMoney()
+  {
+    $twitter = $this->getMock('Twitter');
+    $twitter->expects($this->once())
+      ->method('tweet');
+    $account = new BankAccount($twitter);
+    $account->deposit(10);
+  }
+}
+
+interface Twitter
+{
+  function tweet($message);
+}
+
+```
+
+- We can test separate main code
+- We can postpone realization of interface implementation
+- We don't need all features of interface (YAGNI)

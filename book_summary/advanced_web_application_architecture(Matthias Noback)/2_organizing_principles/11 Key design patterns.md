@@ -12,7 +12,7 @@ In this book the concept of an entity is the same as the concept of an aggregate
 - Most of the other objects should be designed to be immutable and stateless.
 - Being mutable, entities should not be passed to clients that don’t intend to change their state.
 - When a client needs to retrieve information from an entity, in most
-  cases they should rely on a different type of object, that is, a Read model (see Section 11.6).
+  cases they should rely on a different type of object, that is, a Read model.
 - The only type of client that is supposed to modify an entity is an Application service
 
 #### 11.2.1 Protect invariants

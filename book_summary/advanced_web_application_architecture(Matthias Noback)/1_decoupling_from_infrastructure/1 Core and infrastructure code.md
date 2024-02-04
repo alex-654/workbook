@@ -5,18 +5,17 @@ The core is the center of your application, the infrastructure is around it.
 
 #### Rule no 1: No dependencies on external systems.
 
-Core code doesn’t directly depend on external systems, nor does it depend on code written for interacting with external
-system.  
-External systems - database, some remote web service, the system’s clock, the file system, and so on.  
-Core code should be able to run without these external dependencies.
-When code follows the first rule, it means you can run it in complete isolation.
-Isolation is great for testability.
-Abstraction is the go-to solution to get rid of dependencies on external systems
+- Core code doesn’t directly depend on external systems, nor does it depend on code written for interacting with
+  external system.
+- External systems - database, some remote web service, the system’s clock, the file system, and so on.
+- Core code should be able to run without these external dependencies.
+- When code follows the first rule, it means you can run it in complete isolation.
+- Isolation is great for testability.
+- Abstraction is the go-to solution to get rid of dependencies on external systems
 
 #### Rule no 2: No special context needed.
 
-Core code doesn’t need a specific environment to run in, nor does it
-have dependencies that are designed to run in a specific context only.
+Core code doesn’t need a specific environment or specific context to run in.
 Exp. of dependencies on environment
 
 - only works at the command line php_sapi_name() !== ’cli’

@@ -25,3 +25,12 @@
 
 - Michael Feathers says:
   To me, legacy code is simply code without tests.
+
+
+- One of my favourite (of the many) things I learned from consulting with Martin Fowler is that he would often ask "
+  **Compared to what?**"
+
+      Agile helps you ship faster!
+      Compared to what?
+
+  -- Daniel Terhorst-North

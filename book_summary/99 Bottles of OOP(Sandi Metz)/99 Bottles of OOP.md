@@ -7,7 +7,7 @@
 ### Consistency
 
 - Inconsistent styling makes code harder for humans to parse;
-  Even when you type different type of if statement (ternary/if).
+  Even when you type different type of if statement (exm. ternary and if).
 - Combining many ideas into a small section of code makes it difficult to isolate and name any single concept
 - Writing code is like writing a book; your efforts are for other readers.
 
@@ -23,10 +23,10 @@ Asking the following questions will give you insight into the potential expense 
 - You should name methods not after what they do, but after what they mean, what they represent in the context of your
   domain.
 
-- When you DRY out duplication or create a method to name a
-  bit of code, you add levels of indirection that make it more abstract.
-- In theory these abstractions make code easier to
-  understand and change, but in practice they often achieve the opposite.
+- When you DRY out duplication or create a method to name a bit of code, you add levels of indirection that make it more
+  abstract.
+- In theory these abstractions make code easier to understand and change, but in practice they often achieve the
+  opposite.
 - One of the biggest challenges of design is knowing when to stop.
 
 ## 1.2. Judging Code
@@ -40,9 +40,8 @@ Asking the following questions will give you insight into the potential expense 
 - Cyclomatic Complexity
 - Assignments, Branches and Conditions (ABC) Metric
     - Assignments is a count of variable assignments.
-    - Branches counts not branches of an if statement, but branches of control, i.e., it counts function calls or
-      message sends.
-    - Conditions counts conditional logic
+    - Branches of control, i.e., it counts function calls or message sends.
+    - Conditions counts conditional logic (if statement)
 
 ## 2.1. Understanding Testing
 

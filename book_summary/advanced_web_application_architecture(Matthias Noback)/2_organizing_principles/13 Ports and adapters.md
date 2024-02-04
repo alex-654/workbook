@@ -68,7 +68,43 @@ communicates directly with the port.
 ![](./../img/hexagon_with_three_adapters.png)
 
 For getting data we can use the same approach.
-Get data from Hexagon (core code) as simple object (DTO), and then adapters convert this data to actor needed format (JSON, xml ...)
+Get data from Hexagon (core code) as simple object (DTO), and then adapters convert this data to actor needed format (
+JSON, xml ...)
 
 ### 13.5 The application as an interface
 
+For outgoing ports, the application (or hexagon) contains an
+interface (OrderRepository, VatRateProvider) for which the adapter has to
+provide an implementation by implementing the interface. For incoming
+ports the application also contains an interface (e.g. ApplicationInterface
+or CommandBus) but the adapters don’t implement this interface, they use it.
+
+### 13.6 Combining ports and adapters with layers
+
+Layering system - Domain, Application, and Infrastructure.  
+You can apply hexagonal architecture, a layered architecture, or both
+
+### 13.7 Structuring the Infrastructure layer
+
+![](./../img/namespaces_for_infrastructure.png)
+Sometimes sub-namespaces of Infrastructure look like they could be
+extracted into a proper package. For example the VatApiDotCom classes might be extracted.  
+If the code is not project-specific you may even make the library publicly accessible.  
+**Accumulation of shared code**  
+If, for instance, you have some mapping utility
+that is used by all the SQL repositories, feel free to add it in the Sql subnamespace.   
+If it’s more like a generic utility that could be used by any class
+in Infrastructure, you might as well make a generic sub-namespace for it
+too (e.g. Shared or Common). The advice about shared code is always to keep
+it to a minimum. If you don’t keep an eye on it, it will grow quickly until
+everything ends up being “shared code”.
+
+### 13.8 Summary
+
+Hexagonal architecture - approach to
+application architecture makes a clear distinction between pure application
+use cases, and how they are connected to the actors that invoke them or are
+invoked by them. We start with recognizing the ports of an application,
+which are intentions of communication between actors and our application.
+For each port, we need at least one adapter, which facilitates the actual communication, taking
+care of its implementation details.

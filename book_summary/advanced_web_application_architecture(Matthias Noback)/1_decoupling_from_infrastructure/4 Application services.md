@@ -35,9 +35,9 @@ because the object represents a user intention: something the user wants the app
 
 ### 4.5 Dealing with multiple steps
 
-For now in controller we have
-1 one service for order create
-2 code that send a conformation email.
+For now in controller we have  
+1. one service for order create
+2. code that send a conformation email.
 
 ```php
 public function orderEbookAction(Request $request): Response

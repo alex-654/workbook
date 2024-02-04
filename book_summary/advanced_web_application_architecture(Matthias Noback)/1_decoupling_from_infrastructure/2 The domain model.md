@@ -16,28 +16,29 @@ Instead of using ORM (Doctrine) we can map entity properties to db table inside 
 final class Order
 {
 // ...
-}
-public function mappedData(): array
-{
-    return [
-    ’email’ => $this−>emailAddress,
-    ’quantity’ => $this−>quantityOrdered,
-    // ...
-    ];
+    public function mappedData(): array
+    {
+        return [
+        ’email’ => $this−>emailAddress,
+        ’quantity’ => $this−>quantityOrdered,
+        // ...
+        ];
+    }
 }
 
 final class SqlOrderRepository implements OrderRepository
 {
-// ...
-public function save(Order $order): int
-{
     // ...
-    $data = $order−>mappedData();
-    // $data is an array of columns => values
+    public function save(Order $order): int
+    {
+        // ...
+        $data = $order−>mappedData();
+        // $data is an array of columns => values
+    }
 }
 ```
 
-mappedData method contains technical implementation details (like table and column names and column types) but no
+MappedData method contains technical implementation details (like table and column names and column types) but no
 dependencies on external code. Can be tested without DB.
 
 ### 2.6 Generating the identifier earlier
@@ -53,8 +54,7 @@ Downside of AR
 - Active Record frameworks usually require a lot of custom code inside your entities to
   make everything work well. This code is specific to the framework, making your domain
   model directly coupled to, and only functional in the presence of that framework.
-- Clients of Order can do many more things with the object than they most likely should be
-  allowed to do.
+- Clients of Order can do many more things with the object than they most likely should be allowed to do.
 
 Downside of DM
 

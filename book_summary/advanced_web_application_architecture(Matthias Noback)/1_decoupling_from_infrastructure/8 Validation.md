@@ -1,11 +1,9 @@
 ## 8 Validation
 
-if I would migrate from a web application to a CLI application,
-would input data still have to be validated?  
-Also, if I change the technical solution I use
-for saving my data (e.g. when I switch to a document database), would I still
-be able to protect the consistency of this data? Imagine not being able to rely
-on foreign key constraints or unique indexes;
+- if I would migrate from a web application to a CLI application, would input data still have to be validated?
+- if I change the technical solution I use for saving my data (e.g. when I switch to a document database), would I still
+  be able to protect the consistency of this data? Imagine not being able to rely
+  on foreign key constraints or unique indexes;
 
 ### 8.1 Protecting entity state
 
@@ -29,7 +27,7 @@ then validate it; we protect the object from ending up in an incorrect state.
 
 ### 8.3 Form validation
 
-So for form validation we can’t rely on entity-level exceptions.  
+For form validation we can’t rely on entity-level exceptions.  
 Because exception:
 
 - only for programmer,
@@ -37,11 +35,11 @@ Because exception:
 - not user-friendly.
 - can be shown one at time.
 
-Form is a very web specific thing so it infrastructure code.
+Form is a very web specific thing so its infrastructure code.
 
 - we should never remove the validation from the value object
 
-Listing 8.11: Validating an ID using the repository.
+Validating an ID using the repository.
 
 ```php
 public function createOrderAction(Request $request): Response
@@ -76,8 +74,7 @@ mechanism, you should keep track of them. If you find these exceptions in
 your server logs, it usually means that:
 
 - Somebody is abusing your application, or
-- You should improve the user interface so users can’t make the same
-  mistake again.
+- You should improve the user interface so users can’t make the same mistake again.
 
 ### 8.4 Using exceptions to talk to users
 

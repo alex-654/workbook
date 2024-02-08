@@ -34,3 +34,6 @@
       Compared to what?
 
   -- Daniel Terhorst-North
+
+
+- Coding is hard. Save mental energy, run your tests often

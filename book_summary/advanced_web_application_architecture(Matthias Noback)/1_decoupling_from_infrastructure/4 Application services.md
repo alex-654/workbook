@@ -9,8 +9,7 @@ If we want to realize the same functionality in CLI or API?
 ### 4.2 Designing a use case to be reusable
 
 To make a use case reusable we should find a common ground that allows
-different types of clients to invoke the same use case. If you start with an
-existing controller like the one we are working on right now, you should
+different types of clients to invoke the same use case. You should
 look for the things that tie the code to specific infrastructure and then
 decouple it from these elements. For instance, the code currently relies on a
 Request object, which makes it only useful in a web context, and the same
@@ -25,7 +24,7 @@ Move all the infrastructure-independent code to its own class
 
 ### 4.4 Introducing a parameter object
 
-The number of method parameters of a service like, may get quickly out of hand. If not leave as primitive data types.
+The number of method parameters of a service like, may get quickly out of hand.
 
 Refactoring - Introduce Parameter Object.
 It makes sense to name this object after its intention. You want to “create an order” with it, so let’s call it

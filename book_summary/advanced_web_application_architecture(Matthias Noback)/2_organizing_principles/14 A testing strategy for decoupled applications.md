@@ -27,9 +27,8 @@ application services, event subscribers, and repositories. These will be tested 
 
 ### 14.2 Adapter tests
 
-Infrastructure tests are
-often called integration tests, or integrated tests. These tests show that infrastructure code
-including third-party code correctly integrates with external actors
+Infrastructure tests are often called integration tests, or integrated tests. These tests show that infrastructure code
+including third-party code correctly integrates with external actors.
 
 ### 14.3 Contract tests for outgoing port adapters
 
@@ -98,7 +97,7 @@ be really hard to do without sacrificing some test stability. Here’s what I us
 ### 14.4 Driving tests for incoming port adapters
 
 For hexagonal architecture we test separate core code and adapters code.
-For adapters, we can use integration test/adapters test.
+For adapters, we can use integration test / adapters test.
 Core code allows itself to be tested with unit tests or use case tests.
 
 So when testing incoming port adapters we should use test doubles for application interface.

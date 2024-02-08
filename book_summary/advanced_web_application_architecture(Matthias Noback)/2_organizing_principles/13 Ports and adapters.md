@@ -13,27 +13,30 @@ isolation from its eventual run-time devices and databases._
 
 ### 13.2 Ports
 
-A primary actor is an actor that takes the
-initiative for communication. An example of a primary actor is a user who
-visits our web page, or an external system that talks to one of our API
-endpoints. When our application reaches out to an external system, for
-instance the database or a mail server, the external system should be
-considered a secondary or supporting actor.  
-With hexagonal architecture all the use cases are core code and they live
-inside the Hexagon. Whenever a primary actor needs to invoke one of the
-application’s use cases the application should define a Port for that.
-Whenever a use case needs to communicate with a supporting actor, like the
-database, we also have to define a Port for that. A port is an “intention of
-communication”. For example: our application may have a port “for creating
-an order” which can be used by primary actors to create an order. Our
-application will also have a port “for saving an order” which indicates that
-the application needs a supporting actor for saving orders.  
-Port == interface  
-Every port will have a corresponding interface element inside the hexagon.
+A primary actor is an actor that takes the initiative for communication.
 
-A hexagon with ports alone is not enough to build a working application. A
-port is only an intention, now we need an implementation. In Cockburn’s
-terminology the implementation of a port is called an Adapter.
+- a user who visits our web page,
+- or an external system that talks to one of our API endpoints.
+
+A secondary or supporting actor - when our application reaches out to an external system.
+
+- for instance the database or a mail server
+
+
+- With hexagonal architecture all the use cases are core code and they live inside the Hexagon.
+- Whenever a primary actor needs to invoke one of the application’s use cases the application should define a Port for
+  that.
+- Whenever a use case needs to communicate with a supporting actor, like the
+  database, we also have to define a Port for that.
+- A port is an “intention of communication”. For example: our application may have a port “for creating
+  an order” which can be used by primary actors to create an order. Our
+  application will also have a port “for saving an order” which indicates that
+  the application needs a supporting actor for saving orders.
+- Port == interface  
+  Every port will have a corresponding interface element inside the hexagon.
+- A hexagon with ports alone is not enough to build a working application. A
+  port is only an intention, now we need an implementation. In Cockburn’s
+  terminology the implementation of a port is called an Adapter.
 
 ### 13.3 Adapters for outgoing ports
 
@@ -55,15 +58,10 @@ in order to make testing of the hexagon easier.
 On the other side of the hexagon are the incoming ports. These are meant to
 accept incoming messages from users or external systems.
 
-The controller itself and code before it is also part of the adapter, since the controller is specifically designed for
-HTTP communication. It uses web-specific objects and services like the current request or the user’s session.
-As soon as the controller calls an
-application service, we step out of the adapter and into the hexagon.
-This is only true for as long as the application service itself is indeed fully
-decoupled from its delivery mechanism and the framework.
-
-In fact, the test code itself should be considered an adapter since it
-communicates directly with the port.
+- The controller itself and code before it is also part of the adapter, since the controller is specifically designed
+  for HTTP communication.
+- As soon as the controller calls an application service, we step out of the adapter and into the hexagon.
+- The test code itself should be considered an adapter since it communicates directly with the port.
 
 ![](./../img/hexagon_with_three_adapters.png)
 
@@ -73,11 +71,11 @@ JSON, xml ...)
 
 ### 13.5 The application as an interface
 
-For outgoing ports, the application (or hexagon) contains an
-interface (OrderRepository, VatRateProvider) for which the adapter has to
-provide an implementation by implementing the interface. For incoming
-ports the application also contains an interface (e.g. ApplicationInterface
-or CommandBus) but the adapters don’t implement this interface, they use it.
+- For outgoing ports, the application (or hexagon) contains an
+  interface (OrderRepository, VatRateProvider) for which the adapter has to
+  provide an implementation by implementing the interface.
+- For incoming ports the application also contains an interface (e.g. ApplicationInterface
+  or CommandBus) but the adapters don’t implement this interface, they use it.
 
 ### 13.6 Combining ports and adapters with layers
 
@@ -87,12 +85,13 @@ You can apply hexagonal architecture, a layered architecture, or both
 ### 13.7 Structuring the Infrastructure layer
 
 ![](./../img/namespaces_for_infrastructure.png)
+
 Sometimes sub-namespaces of Infrastructure look like they could be
 extracted into a proper package. For example the VatApiDotCom classes might be extracted.  
 If the code is not project-specific you may even make the library publicly accessible.  
 **Accumulation of shared code**  
 If, for instance, you have some mapping utility
-that is used by all the SQL repositories, feel free to add it in the Sql subnamespace.   
+that is used by all the SQL repositories, feel free to add it in the Sql sub-namespace.   
 If it’s more like a generic utility that could be used by any class
 in Infrastructure, you might as well make a generic sub-namespace for it
 too (e.g. Shared or Common). The advice about shared code is always to keep

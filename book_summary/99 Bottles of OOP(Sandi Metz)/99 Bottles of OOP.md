@@ -61,8 +61,6 @@ When in the "writing code" hat, you pretend to know nothing other
 than the requirements specified by the tests at hand.   
 Thus, although each individual test is correct, until are all written, the code is incomplete.
 
-TDD requires that you pass tests by writing simple code.
-
 “As the tests get more specific, the code gets more generic.”
 
 So when making a test pass, you try to do so with transformations that are simpler (higher on the list) than those that
@@ -83,10 +81,10 @@ https://blog.cleancoder.com/uncle-bob/2013/05/27/TheTransformationPriorityPremis
 - (expression->function) replacing an expression with a function or algorithm
 - (variable->assignment) replacing the value of a variable.
 
-During the green we prefer simpler transformations. During the red phase we prefer tests that can be passed with simpler
-transformations.
-
 Developing the habit of writing just enough code to pass the tests forces you to write better tests.
+
+- During the green we prefer simpler transformations.
+- During the red phase we prefer tests that can be passed with simpler transformations.
 
 Tests are not the place for abstractions — they are the place for concretions.
 
@@ -94,8 +92,8 @@ Tests are not the place for abstractions — they are the place for concretions.
 
 If your tests are flawed such that they interfere with refactoring, improve them first, and then refactor.
 
-The good news is that you don’t have to be able to see the
-abstraction in advance. You can find it by iteratively applying a small set of simple rules.
+The good news is that you don’t have to be able to see the abstraction in advance. You can find it by iteratively
+applying a small set of simple rules.
 These rules are known as "Flocking Rules":
 
 1. Select the things that are most alike.
@@ -116,13 +114,12 @@ difference, you’ve identified that smaller abstraction.
 
 - Name the concept, create the method, and replace the difference with a common message send.
 - So anything that increases understandability lowers costs.
-- Subclasses, by definition, are all that their superclasses are, plus more,
+- Subclasses, by definition, are all that their superclasses are, plus more.
 
 ## 5. Separating Responsibilities
 
-Having multiple methods that take
-the same argument is a code smell. It’s important, however, to
-recognize that here the term "same" means same concept, not
+Having multiple methods that take the same argument is a code smell.
+It’s important, however, to recognize that here the term "same" means same concept, not
 identical name. In an ideal world, each different concept
 would have its own unique, precise name, and there would be
 no ambiguity. Unfortunately, real world code often fails to

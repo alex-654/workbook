@@ -6,26 +6,17 @@
 - integration (test for adapters incoming and outgoing)
     - Contract tests for outgoing port adapters (DB, external DataProviders)
     - Driving tests for incoming port adapters (Controllers, API, CLI)
-- use-case (isolated like a unit)
+- use-case (isolated like a unit for domain logic (application services))
 - end-to-end (test from start to end)
 
-### Cоdeception test framework divide test on
+### Codeception test framework divide test on
 
 - Acceptance (automated test with browser emulation like PhpBrowser)
 - Functional (the test runner exercises the application's front controller programmatically, instead of through a web
   server)
 - Unit
 
-### stackoverflow answer 1
-
-- Unit Tests are written from a programmer perspective.  
-  They are made to ensure that a particular method (or a unit) of a class performs a set of specific tasks.
-- Functional Tests are written from the user's perspective.  
-  They ensure that the system is functioning as users are expecting it to.
-
-### stackoverflow answer 2 (V-model)
-
-https://en.wikipedia.org/wiki/V-model_(software_development)
+### stackoverflow (unit vs functional) (V-model)
 
 **Test level** is easy to explain using V-model
 

@@ -19,13 +19,12 @@ Normally, the framework will take care of all of this by preparing the service c
 configuration before the application service is used.
 
 - If we see this dependencies code isn’t as portable as we would like it to be.
-  Your code will be more future-proof if you don’t
-  rely on framework-specific helpers or “syntactic sugar”, which are subject to fashion.
+  Your code will be more future-proof if you don’t rely on framework-specific helpers or “syntactic sugar”, which are
+  subject to fashion.
 - Your code will also be easier to test, and will remain easier to test,
   even when you have migrated to a different framework.
 - In fact, if you depend on framework-specific classes and functions, it will be very hard to
-  migrate to another framework because you will have to make changes
-  everywhere.
+  migrate to another framework because you will have to make changes everywhere.
 
 ### 5.3 Injecting dependencies
 
@@ -68,7 +67,7 @@ different areas of a code base require different types of tests.
 A unit test is a test that doesn’t use any IO (it doesn’t use the file system, a database, an external service, etc.)
 and usually but not necessarily covers a smaller unit of code, like a single class.
 
-With explicit dependencies throw constructor it is easy to test.
+With explicit dependencies in constructor it is easy to test.
 If you miss something it is clear what you miss.
 
 ### 5.8 Effective testing
@@ -82,8 +81,7 @@ If you can do this, you will end up with two islands of code:
 
 ### 5.9 The Composition root is near the entry point
 
-A Composition Root is a (preferably) unique location in an application
-where modules are composed together.
+A Composition Root is a (preferably) unique location in an application where modules are composed together.
 
 The entry point is the user code that the framework calls first.
 

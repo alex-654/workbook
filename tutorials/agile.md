@@ -1,0 +1,1 @@
+- https://verraes.net/2020/01/wall-of-technical-debt/ technical debt

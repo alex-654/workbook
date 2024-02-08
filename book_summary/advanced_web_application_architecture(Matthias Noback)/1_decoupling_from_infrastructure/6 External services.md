@@ -21,7 +21,6 @@ implementation sneak into an interface, making it a less powerful abstraction.
 ### 6.4 Testing
 
 Core code is code that doesn’t use IO (network, file system, etc.) (no side effects).  
-code can be tested in complete isolation.  
-
+code can be tested in complete isolation.
 
 ### 6.5 Summary

@@ -4,7 +4,6 @@
 
 ### 11.2 Entities
 
-The first pattern to cover is the Entity pattern.
 In this book the concept of an entity is the same as the concept of an aggregate in Domain-Driven Design literature.
 
 - Entities are objects that preserve the state of your application.
@@ -57,14 +56,14 @@ implements the interface and the contract described by it.
 
 The Order entity can be created, you can change its delivery address, cancel it, etc. These
 behaviors are represented by command methods, with an intention-revealing name. Only
-Application services should have access to these methods. An application service coordinatesthe requested change.
+Application services should have access to these methods. An application service coordinates the requested change.
 
 #### 11.4.1 Return the identifier of a new entity
 
 Application service methods are command methods: they change entity state and shouldn’t
 return anything. However, when an application service creates a new entity returning id is fine.
 But service should not return hole entity.
-If you need some information in response fetch read model ad in example.
+If you need some information in response fetch read model.
 
 ```php
 final class OrderController
@@ -91,7 +90,7 @@ final class OrderController
 An application service has to translate the primitive-type values from the DTO to the value objects (rich domain
 objects) that the entity can work with.
 
-It can be done inside DTO
+It can be done inside DTO.
 
 This approach has several advantages:
 
@@ -138,7 +137,7 @@ public function changeDeliveryAddress(OrderId $orderId, ChangeDeliveryAddress $c
 #### 11.5.1 Move subscribers to the module where they produce their effect
 
 The class name of an event subscriber should describe what it’s going to do, e.g. “create an
-invoice” (Listing 11.19). The methods of the event subscriber should describe when it’s going
+invoice”. The methods of the event subscriber should describe when it’s going
 to do this. Doing so allows you to move event subscribers to the area where they produce their
 effect.
 
@@ -168,7 +167,9 @@ read models as local representations of remote entities a very powerful architec
 #### 11.6.3 For view models, prepare the data for rendering
 
 Figure below shows these different view models that Invoicing offers to its actors.
+
 ![](./../img/read_models.png)
+
 The view models themselves need to be fully prepared for the view that renders them to the user.
 
 ### 11.7 Process modelling

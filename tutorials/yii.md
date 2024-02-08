@@ -19,10 +19,10 @@ Transaction in Yii2 with savepoint
         }
 ```
 
-
-Yii for insert execute command by PDO, then execute function lastInsertId to get id for new entity.
+Yii for insert execute command by PDO, then execute sql function lastInsertId to get id for new entity.
 
 For query
+
 ```php
         $orders = Order::find()
             ->joinWith('receivePoint')
@@ -31,7 +31,8 @@ For query
             ->all();
 ```
 
-In DB we get next 4 query
+In DB we get next 4 query (->joinWith() and ->innerJoinWith() by default with eager loading)
+
 ```sql
 "SELECT * FROM `user_key` WHERE (`user_id` IN (16929, 110960, 114522, 119961, 120000, 120142, 120938, 121417, 125760, 129124, 139119, 139476, 140047, 143712)) AND (date_to is null or date_to > now()) ORDER BY `id` DESC"
 "SELECT * FROM `user` WHERE `id` IN (16929, 129124, 114522, 139476, 119961, 120938, 140047, 125760, 139119, 110960, 120142, 121417, 143712, 120000)"

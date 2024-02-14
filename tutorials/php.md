@@ -211,3 +211,54 @@ interface Twitter
 - We can test separate main code
 - We can postpone realization of interface implementation
 - We don't need all features of interface (YAGNI)
+
+### static vs self
+
+only matter
+
+- in static context
+- with inheritance
+
+Static keyword comes with php 5.3
+You can see many usage case in AR implementation.
+
+- self:: realized in AST parse context early binding. Should be a little faster than static. If inherited it will still
+  represent the class where it was originally defined
+- static:: - Late binding (in runtime)
+
+Examples
+
+```php
+class A
+{
+    public static function getNameWithStatic()
+    {
+        return static::class;
+    }
+
+    public static function getNameWithSelf()
+    {
+        return self::class;
+    }
+    
+    public static function newSelf()
+    {
+        return new self();
+    }
+
+    public static function newStatic()
+    {
+        return new static();
+    }    
+}
+
+class B extends A
+{
+}
+
+$resultSelf   = B::getNameWithSelf(); // A
+$resultStatic = B::getNameWithStatic(); // B
+
+$resultNewSelf = B::newSelf(); // A
+$resultNewStatic = B::newStatic(); // B
+```

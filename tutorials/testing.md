@@ -46,6 +46,11 @@ There are two big groups: Functional and Non-Functional Testing.
 
 ## Given/When/Then syntax:
 
+- Given some initial context (the givens),
+- When an event occurs,
+- Then ensure some outcomes.
+
+
 - Given the user with ID 1 has username "alice"
 - When getting the username of the user with ID 1
 - Then the username is "alice"
@@ -98,3 +103,8 @@ $fallbackMailer->shouldHaveReceived('send')
   page.  
   But always look for ways to prevent this, and let your application remain the black box that you poke at with HTTP
   requests only, making only assertions about the response you receive.
+
+
+## test pyramid
+
+![](img/testPyramid.jpg)

@@ -5,7 +5,10 @@
 - много параметров и предвидятся частые изменения
 
 Изменения в коде
+
 - рефакторинг
 - код хакинг
 - переписывание
 - добавление кода
+
+A component - is any well-encapsulated, coherent and independently replaceable part of a larger system. 

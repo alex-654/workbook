@@ -222,7 +222,8 @@ only matter
 Static keyword comes with php 5.3
 You can see many usage case in AR implementation.
 
-- self:: realized in AST parse context early binding. Should be a little faster than static. If inherited it will still
+- self:: realized in AST build (compile time) early binding. Should be a little faster than static. If inherited it will
+  still
   represent the class where it was originally defined
 - static:: - Late binding (in runtime)
 

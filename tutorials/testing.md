@@ -7,7 +7,7 @@
     - Contract tests for outgoing port adapters (DB, external DataProviders)
     - Driving tests for incoming port adapters (Controllers, API, CLI)
 - use-case (isolated like a unit for domain logic (application services))
-- end-to-end (test from start to end)
+- end-to-end (test from start to end; as black box)
 
 ### Codeception test framework divide test on
 
@@ -88,7 +88,7 @@ $fallbackMailer->shouldHaveReceived('send')
 - "Don't Mock What you Don't Own" (Wrap the third party library, create interface and default realization with fake/test
   realization
 
-### Drawbacks of functional tests
+#### Drawbacks of functional tests
 
 - Faking a Request object
 - Since you have access to the application's service container you may be tempted to open the black box and replace all
@@ -104,7 +104,42 @@ $fallbackMailer->shouldHaveReceived('send')
   But always look for ways to prevent this, and let your application remain the black box that you poke at with HTTP
   requests only, making only assertions about the response you receive.
 
+## one of test pyramids
 
-## test pyramid
+classic one
+![](img/testPyramid_Fawler.png)
 
+reverse or trophy
 ![](img/testPyramid.jpg)
+
+## BDD
+
+Each feature of a product should be born from a talk between
+
+- business (analysts, product owner)
+- developers
+- QAs
+
+which are known in BDD as “three amigos”.
+
+Such talks should produce written stories. There should be an actor that doing some things, the feature that should be
+fulfilled within the story and the result achieved.
+
+## M. Fawler on test
+
+https://martinfowler.com/articles/microservice-testing/#testing-progress-3
+
+By combining
+
+- unit,
+- integration
+- and component testing (deep logic test)
+
+we are able to achieve high coverage of the modules that make up a
+microservice and can be sure that the microservice correctly implements the required business logic.
+
+![](img/fawler_on_test.png)
+
+testing summary
+
+![](img/fawler_on_test_2.png)

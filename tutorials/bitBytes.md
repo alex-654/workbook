@@ -3,7 +3,7 @@ unsigned integer (uint)
 When an integer is signed, the first bit will be used to store whether the integer is a positive or negative integer.
 
 One char in ASCII - 1 byte, Unicode 1-4;
-So how many bytes give access to what characters in these encodings?
+How many bytes  in character encodings?
 
 UTF-8:
 
@@ -17,7 +17,7 @@ UTF-16:
     2 bytes: BMP
     4 bytes: All Unicode characters
 
-Ranges for Different Types of Integers
+### Ranges for Different Types of Integers
 
 ```
 Signed   8-bit   -128 through 127       | 2^7
@@ -34,7 +34,7 @@ In Mysql a simple Rule of Thumb - DECIMAL(M,N) takes about M/2 bytes.
 DECIMAL(11,2) for money allows up to a billion dollars/Euros in 5 bytes.  
 I see no advantage in using (10,2) or (9,2), each of which is also 5 bytes.  
 
-binary to decimal representation
+### binary to decimal representation
 
 ```
 // No bits set => zero

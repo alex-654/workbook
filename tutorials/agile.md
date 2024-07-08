@@ -1,1 +1,2 @@
 - https://verraes.net/2020/01/wall-of-technical-debt/ technical debt
+- https://martinfowler.com/articles/bottlenecks-of-scaleups/06-onboarding.html (onboarding)

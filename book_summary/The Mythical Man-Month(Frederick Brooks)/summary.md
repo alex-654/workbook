@@ -92,7 +92,7 @@ How can a group of 10 architects maintain the conceptual integrity of a system w
   are.
 - One needs both a formal definition of a design, for precision, and a prose definition for comprehensibility.
 - One of the formal and prose definitions must be standard, and the other derivative.
-- An architectural "definition will be cleaner and the [architectural] discipline tighter if at least two
+- An architectural "definition will be cleaner and the architectural discipline tighter if at least two
   implementations are built initially."
 
 ### Formal Definitions
@@ -200,7 +200,6 @@ The discard and redesign may be done in one lump, or piece-by-piece, but it will
 ## 12 Sharp Tools
 
 _A good workman is known by his tools._ proverb
-This chapter looks outdated.
 
 ## 13 The Whole and the Parts
 

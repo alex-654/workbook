@@ -1,4 +1,5 @@
 ### variables
+
 ```go
 var num int = 11  // long
 num := 22 // short
@@ -11,6 +12,7 @@ var (
 ```
 
 ### function
+
 ```go
 // public function
 func Multiply(x int, y int) int {
@@ -33,15 +35,17 @@ func divide(x, y int) (int, error) {
 ```
 
 ### base  scalar types
+
 int, int64, float64
 
-
 ### convert int to string
+
 ```go
 s := strconv.Itoa(-42) // "-42"
 ```
 
-### loop 
+### loop
+
 ```go
 
 for i := 0; i < 10; i++ { //base
@@ -68,6 +72,7 @@ for i, name := range names {
 ```
 
 ### switch
+
 ```go
 switch x {
     default: // default always evaluates last
@@ -91,6 +96,7 @@ switch {
 ```
 
 ### strings
+
 ```go
 "hello " + "world" // "hello world"
 
@@ -102,18 +108,40 @@ len("го") // 4 return bytes
 ```
 
 ### sort example
+
 ```go
 sort.Slice(nums, func(i, j int) bool {
     return nums[i] < nums[j]
 })
 ```
+
 ### slice
+
 ```go
 s := []int{}
 s := []int{1, 2} 
 ```
 
+values of slice always pass as pointer. len and cap passed behave as value.
+Передача слайса как аргумента функции происходит хитро. Длина и вместимость передаются по значению, но массив значений
+передается по ссылке. Вследствие этого получается неявное поведение: добавленные элементы не сохранятся в исходный
+слайс, но изменение существующих останется
+To return new slice from function
+
+```go
+func CopyParent(p *Parent) Parent {
+	if p == nil {
+		return Parent{}
+	}
+	newChildren := make([]Child, len(p.Children))
+	copy(newChildren, p.Children)
+
+	return Parent{p.Name, newChildren}
+}
+```
+
 ### map
+
 ```go
 // empty map long
 var m map[int]string

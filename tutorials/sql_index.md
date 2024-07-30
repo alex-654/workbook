@@ -7,7 +7,13 @@ INDEX
 
 ### B-Tree Index Characteristics
 
-No index used
+Can be used with operators
+
+```<   <=   =   >=   >```
+
+O(log n)
+
+Example no index used
 
 ```sql
 /* index_part1 is not used */
@@ -20,6 +26,17 @@ No index used
 ... WHERE index_part1=1 OR index_part2=10
 
 ```
+
+### Hash Index Characteristics
+Only ```=```  
+O(1)  
+Hash indexes store a 32-bit hash code derived from the value of the indexed column. Hence, such indexes can only handle simple equality comparisons.
+
+- Hash index is usually smaller than a corresponding B-Tree index
+- Hash index select and insert performance can be better than a B-Tree index
+- Hash index has many restrictions that limit its use to very specific use cases  
+
+https://hakibenita.com/postgresql-hash-index
 
 ### Index types
 
@@ -176,7 +193,7 @@ WHERE key_col LIKE other_col; -- no index
 
 #### Composite index
 
-- Columns with equality conditions should go first in index.
+- Columns with equality conditions should go first in index; the ranged part last
 - If you have multiple columns with equalities in your query, placing the one with the fewest different values first
   will give the best compression advantage
 - When you have a composite index that could be in any order, the cardinality of the individual columns does not matter

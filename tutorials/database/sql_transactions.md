@@ -27,38 +27,44 @@
 - REPEATABLE READ - If the transaction re-issues the read, it will find the same data even data changes in another
   transactions.
 - SERIALIZABLE - range-locks are managed, so Phantom read can't occur. This level is like REPEATABLE READ, but InnoDB
-  implicitly converts all plain SELECT
-  statements to SELECT ... FOR SHARE if autocommit is disabled. More Deadlock may happen when you update rows
-  with this isolation level.
+  implicitly converts all plain SELECT statements to SELECT ... FOR SHARE if autocommit is disabled. 
+  More Deadlock may happen when you update rows with this isolation level.
 
-![img.png](img/isolation_levels.png)
+![img.png](../img/isolation_levels.png)
 
 ### Non-repeatable reads (read skew)
 
-![img.png](img/non_repeatable_reads.png)
+![img.png](../img/non_repeatable_reads.png)
 
 ### Phantom reads
 
-![img.png](img/phantom_reads.png)
+![img.png](../img/phantom_reads.png)
 
 ### Lock in mysql
 
-Non-locking read is default. For locking read use FOR SHARE, FOR UPDATE
+Non-locking read is default. For **locking read** use FOR SHARE, FOR UPDATE
+Can help with problems - Lost update and Write skew
 
 #### SELECT ... FOR SHARE
 
 Sets a shared mode lock on any rows that are read. Other sessions can read the rows, but cannot modify them until your
-transaction commits. If any of these rows were changed by another transaction that has not yet committed, your query
+transaction commits.
+
+- Other transactions can read locked rows
+- Other transactions are blocked from updating those rows
+- If any of these rows were changed by another transaction that has not yet committed, your query
 waits until that transaction ends and then uses the latest values.
 
-It's not same as transaction lock on update. You lock data not on update but on select.
-
+Looks like it more suit for insert
 #### SELECT ... FOR UPDATE
+Behave as SELECT ... FOR SHARE plus more
+- blocked from doing SELECT ... FOR SHARE (FOR UPDATE), or from reading the data in certain transaction isolation levels (SERIALIZABLE).
 
-Other transactions are blocked from updating those rows, from doing SELECT ... FOR SHARE, or from reading the data in
-certain transaction isolation levels (SERIALIZABLE).
+
 When do locking read be sure to use fields with index preferably unique, to not lock all scanning rows in table.
+And do not use reading lock on rows without index.
 
 ### ETC...
 
 - A transaction will timeout after 50 seconds  see innodb_lock_wait_timeout
+- transaction provide an illusion that it’s the only process running in the database.

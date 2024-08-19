@@ -62,7 +62,7 @@ public function buyItem($itemId, $userId)
 // И тут нужен кеш или мьютех или др.
 public function buyItem(int $itemId, int $userId): void
 {
-     $transaction = $this->getDb()->beginTransaction(); //defalt level of isolation
+     $transaction = $this->getDb()->beginTransaction(); //defalt level of isolation, можно понизить до READ COMMITTED
      $item = "select * from item where id = {$itemId}"; // item можно не блокировать на изменения, если политка позволяет уйти по кол-ву товаров в минус.
      $user = "select * from user where id = {$userId} FOR UPDATE"; // При FOR SHARE можем получить deadlock если прийдет повторный запрос, а текущая транзакция не успеет выполниться
      
@@ -86,8 +86,8 @@ public function buyItem(int $itemId, int $userId): void
 ```php
 // Можно повысить уровень транзакции до SERIALIZABLE
 // Транзакция открывается вверху.
-// Из минусов тут нельзя будет выбрать что можно залочить, а что нет.
-// Можно получить деадлок, если одна транзакция не успеет завершить update часть
+// Из минусов тут нельзя будет выбрать что можно залочить, а что нет. Хотя те запросы которые не нужно лочить можны вынести за транзакцию. 
+// Если транзакции получат пересечение, то получим деадлок. Нужно думать как перезапускать транзакции.
 // Но проблемы потерянных данных можно будет избежать
 public function buyItem($itemId, $userId)
 {
@@ -99,7 +99,7 @@ public function buyItem($itemId, $userId)
 ```
 
 ```php
-// Еще есть вариант сделать через lock/mutex в бд (SELECT GET_LOCK)
+// Еще есть вариант сделать через lock/mutex/пользовательские блокировки в бд (SELECT GET_LOCK)
 // Из плюсов юзеру можно отправить сообщение о том, что его предудущая транзакция еще в работе
 public function buyItem($itemId, $userId)
 {

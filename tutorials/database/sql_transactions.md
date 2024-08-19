@@ -26,9 +26,15 @@
   restricts the reader from seeing any intermediate, uncommitted, 'dirty' read.
 - REPEATABLE READ - If the transaction re-issues the read, it will find the same data even data changes in another
   transactions.
+  Whe use it? - Because REPEATABLE READ is the ideal isolation level for read-only transactions.
 - SERIALIZABLE - range-locks are managed, so Phantom read can't occur. This level is like REPEATABLE READ, but InnoDB
-  implicitly converts all plain SELECT statements to SELECT ... FOR SHARE if autocommit is disabled. 
+  implicitly converts all plain SELECT statements to SELECT ... FOR SHARE if autocommit is disabled.
   More Deadlock may happen when you update rows with this isolation level.
+  When you use a non-SERIALIZABLE isolation level, you're giving the database permission to return an incorrect answer
+  in the hope that it will be faster than producing the correct one.
+  A typical use case for when SERIALIZABLE is the best option would be a banking or financial payments system that processes transactions that transfer money between accounts.
+
+https://www.cockroachlabs.com/blog/sql-isolation-levels-explained/
 
 ![img.png](../img/isolation_levels.png)
 
@@ -53,18 +59,21 @@ transaction commits.
 - Other transactions can read locked rows
 - Other transactions are blocked from updating those rows
 - If any of these rows were changed by another transaction that has not yet committed, your query
-waits until that transaction ends and then uses the latest values.
+  waits until that transaction ends and then uses the latest values.
 
 Looks like it more suit for insert
-#### SELECT ... FOR UPDATE
-Behave as SELECT ... FOR SHARE plus more
-- blocked from doing SELECT ... FOR SHARE (FOR UPDATE), or from reading the data in certain transaction isolation levels (SERIALIZABLE).
 
+#### SELECT ... FOR UPDATE
+
+Behave as SELECT ... FOR SHARE plus more
+
+- blocked from doing SELECT ... FOR SHARE (FOR UPDATE), or from reading the data in certain transaction isolation
+  levels (SERIALIZABLE).
 
 When do locking read be sure to use fields with index preferably unique, to not lock all scanning rows in table.
 And do not use reading lock on rows without index.
 
 ### ETC...
 
-- A transaction will timeout after 50 seconds  see innodb_lock_wait_timeout
+- A transaction will timeout after 50 seconds see innodb_lock_wait_timeout
 - transaction provide an illusion that it’s the only process running in the database.

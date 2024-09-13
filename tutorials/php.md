@@ -223,8 +223,7 @@ Static keyword comes with php 5.3
 You can see many usage case in AR implementation.
 
 - self:: realized in AST build (compile time) early binding. Should be a little faster than static. If inherited it will
-  still
-  represent the class where it was originally defined
+  still represent the class where it was originally defined. Self could be replaced with class name.
 - static:: - Late binding (in runtime)
 
 Examples
@@ -250,7 +249,12 @@ class A
     public static function newStatic()
     {
         return new static();
-    }    
+    }   
+    
+    public function getName()
+    {
+        echo self::class;  // it's like A::class no matter if it parent or child calls 
+    } 
 }
 
 class B extends A
@@ -262,6 +266,9 @@ $resultStatic = B::getNameWithStatic(); // B
 
 $resultNewSelf = B::newSelf(); // A
 $resultNewStatic = B::newStatic(); // B
+
+$object = new B();
+$object->getName(); // output A with self
 ```
 
 ### php internals

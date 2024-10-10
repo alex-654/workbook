@@ -84,8 +84,8 @@ Application, from Application to Domain; never the other way around. This
 is a great design tool for a software architect like yourself, because you can
 reconnect your application to different types of actors without affecting the
 classes that are in the Application or Domain layer.  
-If there are no
-dependencies upwards, this means we can rewrite or replace higher layerswithout affecting the lower ones.
+If there are no dependencies upwards, this means we can rewrite or replace higher layers without affecting the lower
+ones.
 
 ### 12.4 Making layers tangible
 
@@ -93,10 +93,9 @@ dependencies upwards, this means we can rewrite or replace higher layerswithout 
 
 #### 12.4.2 Using namespaces for layering
 
-Examples 
+Examples
 
 ![](./../img/namespaces.png)
-
 
 ![](./../img/application_namespace.png)
 

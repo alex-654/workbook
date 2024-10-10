@@ -18,6 +18,13 @@ list of queues and messages inside them
 rabbitmqctl list_queues
 ```
 
+очистить очередь
+
+```bash
+rabbitmqctl purge_queue  DeliveryHook
+```
+
+
 
 yii extension for rabbitMQ
 config

@@ -270,3 +270,8 @@ $resultNewStatic = B::newStatic(); // B
 $object = new B();
 $object->getName(); // output A with self
 ```
+
+
+### php errors
+php will try call __destruct() on every error.
+But some can't be handled. (Fatal error: Allowed memory size of 33554432 bytes exhausted)  

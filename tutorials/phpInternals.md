@@ -1,7 +1,6 @@
-
 ### php internals
 
-- Переменные php представлены в движке C (send engine) структурой zval.
+- Переменные php представлены в движке C (zend engine) структурой zval.
 - the type can change during the life of a zval
 - variable types are only known at run-time and not at compile-time
 - zval stores some value and the type this value has
@@ -38,3 +37,17 @@ duplicating the structure.
 ### Zend Memory Manager
 
 Zend Memory Manager (ZendMM or ZMM) php own layer over the traditional libc’s dynamic memory allocator
+
+While zvals themselves are generally not shared, it’s possible to share the structures they point to using the
+refcounting mechanism.
+
+In CLI php create separate process for each command. On web one process can handle a 1000 of requests.
+Opcache useful for web (php-fpm). It can store in memory static information from different requests.
+
+There exists two kinds of dynamic memory allocations while programming PHP Core or extensions:
+
+- Request-bound dynamic allocations.
+- Permanent dynamic allocations.
+
+In C, the library function malloc is used to allocate a block of memory on the heap.
+free store (informally called the "heap").

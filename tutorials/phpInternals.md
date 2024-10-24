@@ -219,7 +219,6 @@ themselves.
 Simple values like integers or floats can be stored directly in a zval, while complex values are represented using a
 pointer to a separate structure.
 
-
 ### FastCGI Process Manager (FPM)
 
 **FastCGI** is a binary protocol for interfacing interactive programs with a web server (Nginx, Apache etc.)
@@ -227,7 +226,78 @@ FPM (FastCGI Process Manager) is a primary PHP FastCGI implementation.
 
 user -> nginx -> php-fpm -> php workers -> nginx -> user
 
-
 ### php Hashtable
 
+The concept behind a hashtable is very simple: The string key is run through a hashing function, which returns an
+integer. This integer is then used as an index into a “normal” array. The problem is that two different strings can
+result in the same hash, as the number of possible strings is virtually infinite while the hash is limited by the
+integer size. As such hashtables need to implement some kind of collision resolution mechanism.
 
+**Collision resolution**: Open addressing, where elements will be stored at a different index if a collision occurs, and
+chaining, where all elements hashing to the same index are stored in a linked list
+
+The elements in the “collision resolution” chain are referred to as “buckets”.
+A bucket is an entry in the hashtable
+
+```c
+typedef struct _HashTable {
+	uint32_t          nTableSize;
+	uint32_t          nTableMask;
+	uint32_t          nNumUsed;
+	uint32_t          nNumOfElements;
+	zend_long         nNextFreeElement;
+	Bucket           *arData; // traverse/iterating data
+	uint32_t         *arHash; // lookup for key
+	dtor_func_t       pDestructor;
+	uint32_t          nInternalPointer;
+	union {
+		struct {
+			ZEND_ENDIAN_LOHI_3(
+				zend_uchar    flags,
+				zend_uchar    nApplyCount,
+				uint16_t      reserve)
+		} v;
+		uint32_t flags;
+	} u;
+} HashTable;
+```
+
+#### iterating
+
+iterating an array looks roughly as follows
+
+```c
+uint32_t i;
+for (i = 0; i < ht->nNumUsed; ++i) {
+	Bucket *b = &ht->arData[i];
+	if (Z_ISUNDEF(b->val)) continue;
+
+	// do stuff with bucket
+}
+```
+
+This corresponds to a linear scan of memory, which is much more cache-efficient than a linked list traversal (where you
+go back and forth between relatively random memory addresses).
+
+#### lookup
+
+In code, the lookup mechanism looks like this:
+
+```c
+zend_ulong h = zend_string_hash_val(key);
+uint32_t idx = ht->arHash[h & ht->nTableMask]; // h & ht->nTableMask -> hash % ht->nTableSize
+while (idx != INVALID_IDX) {
+	Bucket *b = &ht->arData[idx];
+	if (b->h == h && zend_string_equals(b->key, key)) {
+		return b;
+	}
+	idx = Z_NEXT(b->val); // b->val.u2.next (b->val = zval struct)
+}
+return NULL;
+```
+
+### Packed hashtables
+
+continuous, integer-indexed arrays (i.e. real arrays)
+The packed hashtable optimization only works if keys are in ascending order. There can be gaps in between them (the keys
+don’t have to be continuous), but they need to always increase. 

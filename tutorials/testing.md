@@ -143,3 +143,14 @@ microservice and can be sure that the microservice correctly implements the requ
 testing summary
 
 ![](img/fawler_on_test_2.png)
+
+Google TotT
+https://testing.googleblog.com/2024/10/smurf-beyond-test-pyramid.html
+
+each test group has +/-
+Exm. unit tests is fast and reliable.
+- Speed (unit) can be run more often
+- Maintainability (unit) The aggregated cost of debugging and maintaining tests
+- Utilization (unit, integration)  Tests that use fewer resources (memory, disk, CPU) cost less to run.
+- Reliability (unit, integration) Reliable tests only fail when an actual problem has been discovered.
+- Fidelity (E2E, integration) closer to approximating real operating conditions

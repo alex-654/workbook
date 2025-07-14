@@ -14,3 +14,11 @@
 - https://verraes.net
 - https://mysql.rjweb.org (mysql tips)
 - https://lizkeogh.com/ (Lean/Agile/Scrum/BDD )
+
+implicit interface
+https://www.hyrumslaw.com/
+“The Law of Implicit Interfaces”: Given enough use, there is no such thing as a private implementation. That is, if an
+interface has enough consumers, they will collectively depend on every aspect of the implementation, intentionally or
+not. This effect serves to constrain changes to the implementation, which must now conform to both the explicitly
+documented interface, as well as the implicit interface captured by usage. We often refer to this phenomenon as "
+bug-for-bug compatibility."

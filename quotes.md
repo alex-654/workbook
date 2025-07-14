@@ -37,3 +37,6 @@
 
 
 - Coding is hard. Save mental energy, run your tests often
+
+- Rob Pike:  
+  Reduce cognitive load by limiting the number of choices.

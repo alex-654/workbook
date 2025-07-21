@@ -27,6 +27,7 @@ Git perks
 - Committed means that the data is safely stored in your local database.
 
 The basic Git workflow goes something like this:
+
 1. You modify files in your working tree.
 2. You selectively stage just those changes you want to be part of your next commit, which adds
    only those changes to the staging area.
@@ -34,15 +35,18 @@ The basic Git workflow goes something like this:
    permanently to your Git directory.
 
 ### Checking Your Settings
+
 ```bash 
 git config --list
 ```
 
 ## Git Basics
+
 Recording Changes to the Repository
 
 Tracked files are files that Git knows about
-To stage it, you run the git add command (“add precisely this content to the next commit”). git add is a multipurpose command — you use it to begin
+To stage it, you run the git add command (“add precisely this content to the next commit”). git add is a multipurpose
+command — you use it to begin
 tracking new files, to stage files, and to do other things like marking merge-conflicted files as
 resolved.
 If you modify a file after you run git add, you have to run git add again to stage the
@@ -51,4 +55,30 @@ latest version of the file.
 GitHub maintains a fairly comprehensive list of good .gitignore file examples for
 dozens of projects and languages at https://github.com/github/gitignore if you want
 a starting point for your project.
+
+Rollback changes (equal commands)
+
+- used in git help
+  ```git restore Modules/DeliveryCourier/Domain/Dictionary/RoutingModeEnum.php```
+- used in phpStorm Gui
+  ```git checkout HEAD -- Modules/DeliveryCourier/Domain/Dictionary/RoutingModeEnum.php```
+
+## Fetching and Pulling from Your Remotes
+
+Remote repos can be many. By default, (when you clone repo) name is origin.
+Download all remote branches to local repo.
+
+```
+git fetch origin
+```
+
+it doesn’t automatically merge it with any of your work or
+modify what you’re currently working on. You have to merge it manually into your work when
+you’re ready.
+
+### alias
+
+```
+git config --global alias.unstage 'reset HEAD --'
+```
 

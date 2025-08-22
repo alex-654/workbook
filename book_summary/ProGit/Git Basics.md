@@ -11,7 +11,6 @@ CVS, Subversion, Perforce, and so on is delta-based version control
 Git perks
 
 - Snapshots, Not Differences. Git thinks about its data more like a stream of snapshots
--
 
 ### Git Has Integrity
 
@@ -52,11 +51,7 @@ resolved.
 If you modify a file after you run git add, you have to run git add again to stage the
 latest version of the file.
 
-GitHub maintains a fairly comprehensive list of good .gitignore file examples for
-dozens of projects and languages at https://github.com/github/gitignore if you want
-a starting point for your project.
-
-Rollback changes (equal commands)
+Rollback changes (equal commands)  
 
 - used in git help
   ```git restore Modules/DeliveryCourier/Domain/Dictionary/RoutingModeEnum.php```

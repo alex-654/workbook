@@ -4,11 +4,12 @@ List on functions -
 https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html
 
 ```sql
-select DATE(created_at) as date, count(id)
-from order
+select DATE (created_at) as date, count (id)
+from
+order
 group by date;
 
-select schedule_template_id, HOUR(date) as hour_part, avg(orders_count)
+select schedule_template_id, HOUR (date) as hour_part, avg (orders_count)
 from user_schedule_load
 group by schedule_template_id, hour_part
 order by schedule_template_id, hour_part;
@@ -56,8 +57,9 @@ with score as (select student_id, sum(score) as total_score
                  from students
                           inner join score on score.student_id = students.id)
 
-select rank() over (order by total_score desc, student_id asc) as rank,
-student_id, name, total_score
+select rank() over (order by total_score desc, student_id asc) as rank, student_id
+     , name
+     , total_score
 from my_rank
 ```
 
@@ -90,16 +92,17 @@ order by rec_cte.id;
 
 ### Window function example
 
-good tutorial https://learnsql.com/blog/sql-window-functions-rows-clause/
+good tutorial https://learnsql.com/blog/sql-window-functions-rows-clause/  
+https://learnsql.com/blog/sql-window-functions-cheat-sheet/
 solution for https://www.codewars.com/kata/6035b3c78e0085002231092b/sql
 
 ```sql
-with agregate_by_day_operations as (select DATE(date) as date, sum(amount) as amount
-                                    from operations
-                                    group by DATE(date)
-                                    order by date)
+with agregate_by_day_operations as (select DATE (date) as date, sum (amount) as amount
+from operations
+group by DATE (date)
+order by date)
 
-select date, sum(amount) over (ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as balance
+select date, sum (amount) over (ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) as balance
 from agregate_by_day_operations;
 ```
 
@@ -140,3 +143,18 @@ In php use math functions like https://www.php.net/manual/en/ref.bc.php or libra
       ON UPDATE CASCADE make sense when parent key ist not primary_key and can be changed
     - RESTRICT==NO ACTION (default) Rejects the delete or update operation for the parent table.
     - SET NULL
+
+### Use COALESCE
+
+use for:
+
+- Fallback Values
+- Meaningful Defaults
+- User-Friendly Notes
+
+```sql
+SELECT customer_id,
+       COALESCE(phone_mobile, phone_home, phone_office, 'no phone') AS contact_number
+FROM customers;
+```
+

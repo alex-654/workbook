@@ -14,6 +14,7 @@
 - https://verraes.net
 - https://mysql.rjweb.org (mysql tips)
 - https://lizkeogh.com/ (Lean/Agile/Scrum/BDD )
+- https://blog.pragmaticengineer.com code design
 
 implicit interface
 https://www.hyrumslaw.com/

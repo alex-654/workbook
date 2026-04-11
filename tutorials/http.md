@@ -16,6 +16,23 @@
 +---------+------+------------+ 
 ```
 
+An "idempotent action" implies that it is safe for a consumer to try and run the action against the application multiple
+times, even in parallel.
+
+PUT (Always Idempotent)
+Behavior: It replaces the entire resource with the provided data.
+
+The PATCH method is not required to be idempotent by the HTTP specification, though it can be designed that way
+When it is Idempotent: If the request specifies an absolute change (e.g., "set status to active"), repeating it will not
+change the state further.
+When it is NOT Idempotent: If the request contains relative instructions (e.g., "increment age by 1" or "add item to
+list"), repeating it will change the resource every time.
+
+how it can be done
+- locking (database redis)
+- unique key in headers compare with value in db. optimistic locking? 
+- constraints in the database (check for status is the same or via unique indexes)
+
 ### Http status codes
 
 Five classes:
